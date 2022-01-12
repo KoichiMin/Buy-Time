@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [bacon, setBacon] = useState(null);
