@@ -13,16 +13,16 @@
 - **Brainstorming**
   - Take a look at the data
     - What do we have to show?
-    - How ca nwe make the most of the provided data?
+    - How can we make the most of the provided data?
   - Ideas for store functionality
     - What do we want users to be able to do?
   - Look and feel
     - Any real-life e-comm sites that inspires us?
 - **Division of labor**
-  - Begin to break down the project into tasks, and then into subtasks, and maybe even subsubtasks. \_Breaking things down into the smallest task possible will improve the collaborative effort of each individual team member.
+  - Begin to break down the project into tasks, and then into subtasks, and maybe even subsubtasks. _Breaking things down into the smallest task possible will improve the collaborative effort of each individual team member._
   - Move all tasks to a board of some kind. [Trello](https://trello.com) would be the easiest to figure out and use.
   - Assign tasks
-    - This is much more open. Discuss with your team to figure out how best to proceed. If you are unsure, speak with a TC or your instructor.
+    - This is much more open. Discuss with your team to figure out how best to proceed. If you are unsure, speak with your PM.
     - Possible questions (relevance will depend on group size)...
       - Who is most excited about a particular task?
       - Do we need a manager for a particular group of tasks? i.e. BE, FE.
