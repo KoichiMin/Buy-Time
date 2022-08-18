@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-// This is a test
 function App() {
   const [bacon, setBacon] = useState(null);
 
