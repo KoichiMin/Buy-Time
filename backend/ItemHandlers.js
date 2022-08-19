@@ -144,10 +144,42 @@ const getNumWatchesByCategory = async (req,res) => {
     }
 }
 
+const getRandomWatches = async (req, res) => {
+    const numOfWatches = req.body.numWatches;
+    try {
+        await client.connect();
+        const db = client.db("Items");
+        const serverData = await db.collection("ItemsData").find().toArray();
+        const watchesInDb = serverData.length;
+        
+        let radomIndexes = [];
+        let watches = [];
+
+        for(let i = 0; i < numOfWatches; i++) {
+            let radomIndex = Math.floor(Math.random()*watchesInDb);
+            while(radomIndexes.includes(radomIndex)) {
+                radomIndex = Math.floor(Math.random()*watchesInDb);
+            }
+            radomIndexes.push(radomIndex);
+        }
+
+        radomIndexes.forEach((i) => {
+            watches.push(serverData[i]);
+        })
+
+        client.close()
+        res.status(200).json({status: "success", watches})
+    } catch (err) {
+        client.close();
+        res.status(400).json({status: 400, error: err.message})
+    }
+}
+
 module.exports = {
     getAllItems, 
     getItem, 
     changeItemStock,
     getAllCategories,
     getNumWatchesByCategory,
+    getRandomWatches,
 }
