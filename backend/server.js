@@ -8,6 +8,8 @@ const {
   getAllItems,
   getItem,
   changeItemStock,
+  getAllCategories,
+  getNumWatchesByCategory,
 } = require("./ItemHandlers.js");
 
 const {
@@ -84,11 +86,14 @@ app.use(function(req, res, next) {
   //GET specific item
   app.get("/api/get-item/:itemId", getItem);
 
-  //POST an item (STRETCH)
-  //app.post("/api/add-item", addItem);
-
   //PATCH to update stock, etc...
   app.patch("/api/update-item", changeItemStock);
+
+  //Get all categories
+  app.get("/api/categories", getAllCategories);
+
+  //GET watches per page per categories
+  app.get("/api/getWatchesByCategory", getNumWatchesByCategory);
 
   //************************
   // Endpoints for COMPANIES
