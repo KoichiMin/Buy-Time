@@ -10,6 +10,7 @@ const {
   changeItemStock,
   getAllCategories,
   getNumWatchesByCategory,
+  getRandomWatches,
 } = require("./ItemHandlers.js");
 
 const {
@@ -94,6 +95,9 @@ app.use(function(req, res, next) {
 
   //GET watches per page per categories
   app.get("/api/getWatchesByCategory", getNumWatchesByCategory);
+
+  //GET random watches from global pool of watches
+  app.get("/api/getRadomWatches", getRandomWatches);
 
   //************************
   // Endpoints for COMPANIES
