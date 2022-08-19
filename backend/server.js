@@ -15,10 +15,10 @@ const {
     getCartItems,
     getCartItem,
     addItemCart,
-    updateItemCart,
     deleteItemCart,
     deleteCart,
     getTotalCartCost,
+    checkout,
 } = require("./ItemCartHandler.js")
 
 const {
@@ -57,22 +57,22 @@ app.use(function(req, res, next) {
   app.post("/api/add-cart-item", addItemCart);
 
   //POST Create A Cart
-  app.post("/api/add-cart-item", createCart);
+  app.post("/api/add-cart", createCart);
 
   //GET Returns A Specific Item In A Cart By Id
   app.get("/api/get-item-cart", getCartItem)
-
-  //PATCH to update an Item In A Cart
-  app.patch("/api/update-cart-item", updateItemCart);
 
   //DELETE an item from a cart by id
   app.delete("/api/delete-cart-item", deleteItemCart);
 
   //DELETE cart by ID
-  app.delete("/api/delete-cart-item", deleteCart);
+  app.delete("/api/delete-cart", deleteCart);
 
   //GET total cost of items
   app.get("/api/get-total", getTotalCartCost);
+
+  //PATCH checks out a cart
+  app.patch("/api/checkout", checkout);
 
   //******************************
   // Endpoints for INVENTORY ITEMS
@@ -85,7 +85,7 @@ app.use(function(req, res, next) {
   app.get("/api/get-item/:itemId", getItem);
 
   //POST an item (STRETCH)
-  app.post("/api/add-item", addItem);
+  //app.post("/api/add-item", addItem);
 
   //PATCH to update stock, etc...
   app.patch("/api/update-item", changeItemStock);
