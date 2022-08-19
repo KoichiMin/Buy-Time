@@ -7,8 +7,7 @@ const morgan = require('morgan');
 const {
   getAllItems,
   getItem,
-  addItem,
-  updateItem,
+  changeItemStock,
 } = require("./ItemHandlers.js");
 
 const {
@@ -83,13 +82,13 @@ app.use(function(req, res, next) {
   app.get("/api/get-items", getAllItems);
 
   //GET specific item
-  app.get("/api/get-item", getItem);
+  app.get("/api/get-item/:itemId", getItem);
 
   //POST an item (STRETCH)
   app.post("/api/add-item", addItem);
 
   //PATCH to update stock, etc...
-  app.patch("/api/update-item", updateItem);
+  app.patch("/api/update-item", changeItemStock);
 
   //************************
   // Endpoints for COMPANIES
