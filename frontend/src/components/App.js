@@ -1,17 +1,27 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
+import styled from "styled-components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// This is a test
-// This is the second test
-function App() {
-  const [bacon, setBacon] = useState(null);
+import Header from './Homepage/Header';
+import Homepage from "../pages/Homepage";
 
-  useEffect(() => {
-    fetch('/bacon')
-      .then(res => res.json())
-      .then(data => setBacon(data));
-  }, []);
+const App = () => {
 
-  return <div>{bacon ? bacon : `...where's my stuff?...`}</div>;
+  return(
+    <BrowserRouter>
+      <Header />
+      <Main>
+        <Routes>
+          <Route path="/" element={<Homepage />}/>
+          <Route path="/item-details" element={<p>Item details</p>}/>
+          <Route path="/cart" element={<p>cart</p>}/>
+        </Routes>
+      </Main>
+    </BrowserRouter>
+  )
 }
 
 export default App;
+
+const Main = styled.div`
+`;
