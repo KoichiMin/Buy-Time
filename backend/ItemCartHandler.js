@@ -3,9 +3,9 @@ const { MongoClient } = require("mongodb");
 const { v4: uuidv4 } = require('uuid');
 
 require("dotenv").config();
-const {Mongo_URI} = process.env;
+const {MONGO_URI} = process.env;
 const options = {};
-const client = new MongoClient(Mongo_URI,options);
+const client = new MongoClient(MONGO_URI,options);
 
 /*
 Creates a cart with the item sent.
