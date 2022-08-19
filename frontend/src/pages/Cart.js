@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Cart = () => {
     return(
-        <div></div>
+        <div>Cart</div>
     );
 };
 
