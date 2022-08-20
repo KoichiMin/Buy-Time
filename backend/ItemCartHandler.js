@@ -35,7 +35,7 @@ Returns All The Items In A Cart
 Provide the Cart's id in the body
 */
 const getCartItems = async(req, res) => {
-    const cartId = req.body.cartId;
+    const cartId = req.params.cartId;
     try {
         await client.connect();
         const db = client.db("Carts");
@@ -144,8 +144,8 @@ Remove An Item From A Cart By Id
 Provide the cart's id and the item's id
 */
 const deleteItemCart = async(req, res) => {
-    const cartId = req.body.cartId;
-    const itemId = req.body.itemId;
+    const cartId = req.params.cartId;
+    const itemId = req.params.itemId;
     try {
         await client.connect();
         const query = {_id:cartId};
@@ -223,7 +223,7 @@ Calculate A Cart's Total Value
 Provide the cart's id
 */
 const getTotalCartCost = async (req,res) => {
-    const cartId = req.body.cartId;
+    const cartId = req.params.cartId;
     try {
         await client.connect();
         const db = client.db("Carts");

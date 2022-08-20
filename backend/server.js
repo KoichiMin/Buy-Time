@@ -7,7 +7,6 @@ const morgan = require('morgan');
 const {
   getAllItems,
   getItem,
-  changeItemStock,
   getAllCategories,
   getNumWatchesByCategory,
   getRandomWatches,
@@ -53,26 +52,27 @@ app.use(function(req, res, next) {
   // Endpoints for CART/PURCHASES
   //*****************************
 
-  //GET all cart items
-  app.get("/api/get-cart-items", getCartItems);
-
-  //POST to add One Item To A Cart
-  app.post("/api/add-cart-item", addItemCart);
 
   //POST Create A Cart
   app.post("/api/add-cart", createCart);
 
+  //GET all cart items
+  app.get("/api/get-cart-items/:cartId", getCartItems);
+
   //GET Returns A Specific Item In A Cart By Id
-  app.get("/api/get-item-cart", getCartItem)
+  app.get("/api/get-item-cart/:cartId/:itemId", getCartItem);
+
+  //POST to add One Item To A Cart
+  app.post("/api/add-cart-item", addItemCart);
 
   //DELETE an item from a cart by id
-  app.delete("/api/delete-cart-item", deleteItemCart);
+  app.delete("/api/delete-cart-item/:cartId/:itemId", deleteItemCart);
 
   //DELETE cart by ID
-  app.delete("/api/delete-cart", deleteCart);
+  app.delete("/api/delete-cart/:cartId", deleteCart);
 
   //GET total cost of items
-  app.get("/api/get-total", getTotalCartCost);
+  app.get("/api/get-total/:cartId", getTotalCartCost);
 
   //PATCH checks out a cart
   app.patch("/api/checkout", checkout);
@@ -87,14 +87,11 @@ app.use(function(req, res, next) {
   //GET specific item
   app.get("/api/get-item/:itemId", getItem);
 
-  //PATCH to update stock, etc...
-  app.patch("/api/update-item", changeItemStock);
-
   //Get all categories
   app.get("/api/categories", getAllCategories);
 
   //GET watches per page per categories
-  app.get("/api/getWatchesByCategory", getNumWatchesByCategory);
+  app.get("/api/getWatchesByCategory/:numWatchesPerPage/:category", getNumWatchesByCategory);
 
   //GET random watches from global pool of watches
   app.get("/api/getRadomWatches/:numWatches", getRandomWatches);
