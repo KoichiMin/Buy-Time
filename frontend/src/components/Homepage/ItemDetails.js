@@ -14,7 +14,7 @@ const ItemDetails = () => {
         .then(data => {
             setItemDetails(data.data);
         }).catch((err) => console.log(err))
-    }, []);
+    }, [itemId]);
     
     //fetching to get list of all companies
     useEffect(() => {
