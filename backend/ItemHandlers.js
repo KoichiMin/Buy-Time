@@ -145,13 +145,12 @@ const getNumWatchesByCategory = async (req,res) => {
 }
 
 const getRandomWatches = async (req, res) => {
-    const numOfWatches = req.body.numWatches;
+    const numOfWatches = req.params.numWatches;
     try {
         await client.connect();
         const db = client.db("Items");
         const serverData = await db.collection("ItemsData").find().toArray();
         const watchesInDb = serverData.length;
-        
         let radomIndexes = [];
         let watches = [];
 
