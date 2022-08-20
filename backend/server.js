@@ -10,6 +10,9 @@ const {
   getAllCategories,
   getNumWatchesByCategory,
   getRandomWatches,
+  getWatchesByName,
+  getNumWatchesByBodyLocation,
+  getNumWatchesByPrice,
 } = require("./ItemHandlers.js");
 
 const {
@@ -95,6 +98,15 @@ app.use(function(req, res, next) {
 
   //GET random watches from global pool of watches
   app.get("/api/getRadomWatches/:numWatches", getRandomWatches);
+
+  //GET watches per page per name
+  app.get("/api/getWatchesByName/:numWatchesPerPage/:userInput", getWatchesByName);
+
+  //GET watches per page per body-location
+  app.get("/api/getWatchesByBodyLocation/:numWatchesPerPage/:body_location", getNumWatchesByBodyLocation);
+
+  //Get watches per page under a certain price
+  app.get("/api/getWatchesByPrice/:numWatchesPerPage/:price", getNumWatchesByPrice);
 
   //************************
   // Endpoints for COMPANIES
