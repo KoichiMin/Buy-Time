@@ -97,7 +97,7 @@ app.use(function(req, res, next) {
   app.get("/api/getWatchesByCategory", getNumWatchesByCategory);
 
   //GET random watches from global pool of watches
-  app.get("/api/getRadomWatches", getRandomWatches);
+  app.get("/api/getRadomWatches/:numWatches", getRandomWatches);
 
   //************************
   // Endpoints for COMPANIES

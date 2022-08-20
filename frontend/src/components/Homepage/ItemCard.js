@@ -1,33 +1,38 @@
 import { useEffect, useState } from "react";
 
 const ItemCard = () => {
-        const [allWatches, setAllWatches] = useState(null);
-        let arrayOfWatches = [];
-       // console.log(allWatches);
+        const [allWatches, setAllWatches] = useState([]);
+
         useEffect(() => {
-            fetch("/api/get-items")
+            fetch(`/api/getRadomWatches/${6}`, {
+                method: 'GET', 
+                header:{
+                    'Content-Type': 'application/JSON',
+                },
+            })
             .then(res => res.json())
             .then((data) => {
-                
-                for(let i = 0; arrayOfWatches.length < 6; i++ ){
-                    arrayOfWatches.push(data.result[Math.floor((Math.random() * 100) + 1 + i)])                
-                }
-                console.log(arrayOfWatches);
-                setAllWatches(arrayOfWatches)
+
+                console.log(data)
+                setAllWatches(data.watches)
             })
             .catch(err =>{
                 console.log(err)
             }) 
         }, []);
+
+    
     return(
         <div>
-            {allWatches && allWatches.map((element, index) =>{
+        hello world
+            {allWatches && allWatches.map((element) =>{
                     return(
                         <div>
                             <img src={element.imageSrc} alt="the watches in the top sellers"/>
                             <div>{element.name}</div>
                             <div>{element.price}</div>
-                            
+                            {/* <BuyNow/> */}
+                            {/* <AddToCart/> */}
                         </div>
                     )
                 })}
