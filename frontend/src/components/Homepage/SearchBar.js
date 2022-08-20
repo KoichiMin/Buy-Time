@@ -26,7 +26,7 @@ const SearchBar = () => {
         }
         />
         <ul>
-            {load &&  list.filter(item=>{
+            {load &&  list !== undefined && list.filter(item=>{
             return item.name.toLowerCase().includes(value.toLowerCase())
             && value.length > 2 
         }).map((selected) =>{
