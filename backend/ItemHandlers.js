@@ -28,47 +28,18 @@ const getAllItems = async (req, res) => {
 // the frontend will need to push out information to be able to get access to the single item
 const getItem = async (req, res) =>{
     try{
-        const {itemId} = req.params;
+        const itemId = Number(req.params.itemId);
         await client.connect();
         const db = client.db("Items");
-        const result = await db.collection("ItemsData").findOne({_id: Number(itemId)});
+        const result = await db.collection("ItemsData").findOne({_id: itemId});
         if(result === null){
             throw new Error(` the item ${itemId} was not found `) 
         }
         client.close();
         res.status(200).json({ status: 200, data: result, message: {success: "the requested data"}  })
-
     }
     catch (err){
-        res.status(400).json({status: 400, error: err.message})
-    }
-}
-
-// change the number of stocks that are available using the req.body 
-// the frontend will need to provide the Id of the item and a number
-const changeItemStock = async (req, res) =>{
-    const Id = req.body.id
-    const num = req.body.num;
-    try{
-    
-        await client.connect();
-        const db = client.db("Items");
-        const availableItem = await db.collection("ItemsData").findOne({"_id": Id});
-        if(availableItem === null){
-            throw new Error("item doesnt exist!")
-        } 
-        if(availableItem.numInStock > num){
-            await db.collection("ItemsData").updateOne({"_id": Id }, {"$set":{numInStock: availableItem.numInStock - num},})
-        } else{
-            throw new Error("bruh we don't got it")
-        }
-        const updatedItem = await db.collection("ItemsData").findOne({"_id": Id});
-        client.close()
-        res.status(200).json({status: 200, updatedItem})
-    }
-    catch(err){
-        client.close();
-        res.status(400).json({status: 400, error: err.message})
+        res.status(400).json({status: 400, error: err.message});
     }
 }
 
@@ -102,8 +73,8 @@ const getAllCategories = async (req,res) => {
 Creates a category in db with all of the watches in that category
 */
 const getNumWatchesByCategory = async (req,res) => {
-    const numOfWatchesPerPage = req.body.numWatches;
-    const category = req.body.category
+    const numOfWatchesPerPage = Number(req.params.numWatchesPerPage);
+    const category = req.params.category;
     try{
         await client.connect();
         const db = client.db("Items");
@@ -145,7 +116,7 @@ const getNumWatchesByCategory = async (req,res) => {
 }
 
 const getRandomWatches = async (req, res) => {
-    const numOfWatches = req.params.numWatches;
+    const numOfWatches = Number(req.params.numWatches);
     try {
         await client.connect();
         const db = client.db("Items");
@@ -177,7 +148,6 @@ const getRandomWatches = async (req, res) => {
 module.exports = {
     getAllItems, 
     getItem, 
-    changeItemStock,
     getAllCategories,
     getNumWatchesByCategory,
     getRandomWatches,
