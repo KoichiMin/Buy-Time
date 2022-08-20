@@ -70,23 +70,19 @@ const getAllCategories = async (req,res) => {
 }
 
 /*
-Creates a category in db with all of the watches in that category
+Gets all of the watches sorted out by page number to be displayed by page in a category
 */
 const getNumWatchesByCategory = async (req,res) => {
     const numOfWatchesPerPage = Number(req.params.numWatchesPerPage);
     const category = req.params.category;
+    const regularExpression = RegExp(category, "i");
     try{
         await client.connect();
         const db = client.db("Items");
-        const AllItems = await db.collection("ItemsData").find().toArray();
-        
-        let AllWatchesInCategory=[];
-
-        AllItems.forEach((item) => {
-            if(item.category === category) {
-                AllWatchesInCategory.push(item);
-            }
-        })
+    
+        let AllWatchesInCategory = await db.collection("ItemsData").find(
+            { category: { $regex: regularExpression}}
+        ).toArray();
 
         let pages = [];
         let pageNum = 1;
@@ -115,6 +111,9 @@ const getNumWatchesByCategory = async (req,res) => {
     }
 }
 
+/*
+Gets a set of random watches
+*/
 const getRandomWatches = async (req, res) => {
     const numOfWatches = Number(req.params.numWatches);
     try {
@@ -145,10 +144,146 @@ const getRandomWatches = async (req, res) => {
     }
 }
 
+/* 
+Finds a (set of) watch(es) based on name
+*/
+const getWatchesByName = async (req,res) => {
+    const userInput = req.params.userInput;
+    const numOfWatchesPerPage = Number(req.params.numWatchesPerPage);
+    const regularExpression = RegExp(userInput, "i");
+    try{
+        await client.connect();
+        const db = client.db("Items");
+
+        let AllWatchesMatchingDescription = await db.collection("ItemsData").find(
+            { name: { $regex: regularExpression}}
+        ).toArray();
+
+        let pages = [];
+        let pageNum = 1;
+
+        while(AllWatchesMatchingDescription.length > 0) {
+            let watches = [];
+            for(let i = 0; i < numOfWatchesPerPage; i++) {
+                if(AllWatchesMatchingDescription[i] !== undefined) {
+                    watches.push(AllWatchesMatchingDescription[i])
+                    AllWatchesMatchingDescription.shift();
+                }
+            }
+            pages.push({
+                pageNumber:pageNum,
+                watchesInPage:watches,
+            });
+            pageNum++;
+        }
+
+        client.close()
+        res.status(200).json({status: "success", pages})
+    }
+    catch(err){
+        client.close();
+        res.status(400).json({status: 400, error: err.message})
+    }
+}
+
+/*
+Gets all of the watches sorted out by page number to be displayed by page by body-location
+*/
+const getNumWatchesByBodyLocation = async (req,res) => {
+    const numOfWatchesPerPage = Number(req.params.numWatchesPerPage);
+    const bodyLocation = req.params.body_location;
+    const regularExpression = RegExp(bodyLocation, "i");
+    try{
+        await client.connect();
+        const db = client.db("Items");
+    
+        let AllWatchesMatching = await db.collection("ItemsData").find(
+            { body_location: { $regex: regularExpression}}
+        ).toArray();
+
+        let pages = [];
+        let pageNum = 1;
+
+        while(AllWatchesMatching.length > 0) {
+            let watches = [];
+            for(let i = 0; i < numOfWatchesPerPage; i++) {
+                if(AllWatchesMatching[i] !== undefined) {
+                    watches.push(AllWatchesMatching[i])
+                    AllWatchesMatching.shift();
+                }
+            }
+            pages.push({
+                pageNumber:pageNum,
+                watchesInPage:watches,
+            });
+            pageNum++;
+        }
+
+        client.close()
+        res.status(200).json({status: "success", pages})
+    }
+    catch(err){
+        client.close();
+        res.status(400).json({status: 400, error: err.message})
+    }
+}
+
+/*
+Gets all of the watches sorted out by page number to be displayed by page by price
+*/
+const getNumWatchesByPrice = async (req,res) => {
+    const numOfWatchesPerPage = Number(req.params.numWatchesPerPage);
+    const price = req.params.price;
+
+    try{
+        await client.connect();
+        const db = client.db("Items");
+    
+        let AllWatches = await db.collection("ItemsData").find().toArray();
+
+        let AllWatchesMatching = [];
+
+        let pages = [];
+        let pageNum = 1;
+
+        AllWatches.forEach((watch) => {
+            if(parseFloat(watch.price.slice(1,watch.price.length)) <= price) {
+                AllWatchesMatching.push(watch);
+            }
+        })
+
+        while(AllWatchesMatching.length > 0) {
+            let watches = [];
+            for(let i = 0; i < numOfWatchesPerPage; i++) {
+                if(AllWatchesMatching[i] !== undefined) {
+                    watches.push(AllWatchesMatching[i])
+                    AllWatchesMatching.shift();
+                }
+            }
+            pages.push({
+                pageNumber:pageNum,
+                watchesInPage:watches,
+            });
+            pageNum++;
+        }
+
+        client.close()
+        res.status(200).json({status: "success", pages})
+    }
+    catch(err){
+        client.close();
+        res.status(400).json({status: 400, error: err.message})
+    }
+}
+
+
 module.exports = {
     getAllItems, 
     getItem, 
     getAllCategories,
     getNumWatchesByCategory,
     getRandomWatches,
+    getWatchesByName,
+    getNumWatchesByBodyLocation,
+    getNumWatchesByPrice,
 }
