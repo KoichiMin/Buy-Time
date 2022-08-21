@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 import {GiMagnifyingGlass} from "react-icons/gi"
 
-import SearchBar from "./SearchBar";
+import SearchBar from "./SearchBar"; 
 
 const Sidebar = (props) => {
     return(
