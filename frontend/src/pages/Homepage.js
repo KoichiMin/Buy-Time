@@ -1,3 +1,4 @@
+import styled from "styled-components";
 // import WatchCard from "../components/Homepage/WatchCard";
 import ItemCard from "../components/Homepage/ItemCard";
 //import Copy from "../components/Homepage/Copy"
@@ -5,10 +6,14 @@ import ItemCard from "../components/Homepage/ItemCard";
 const Homepage = () => {
     return(
 
-        <div>
+        <Wrapper>
             <ItemCard/>
-        </div>
+        </Wrapper>
     );
 };
 
 export default Homepage;
+
+const Wrapper = styled.div`
+margin-left: 20vw;
+`
