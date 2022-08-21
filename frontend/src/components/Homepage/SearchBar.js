@@ -35,24 +35,6 @@ const SearchBar = () => {
             } 
         })    
     }
-    
-    let randomIndexes = [];
-    let displayNames = [];
-    let displayIds = []; 
-
-    let randomIndex = Math.floor(Math.random() * filteredNames.length);
-
-    for(let i = 0; i <= 5; i++) {
-        if(randomIndexes.includes(randomIndex)) {
-            randomIndex = Math.floor(Math.random() * filteredNames.length);
-        }
-        randomIndexes.push(randomIndex);
-    }
-
-    randomIndexes.forEach((i) => {
-        displayNames.push(filteredNames[i]);
-        displayIds.push(filteredIds[i]);
-    })
 
     if(!WatchDataGlobal.watchNamesHaveLoaded) {
         return(
@@ -74,17 +56,18 @@ const SearchBar = () => {
                     updateSearchBarValue({data:e.target.value});
                 }}
                 onClick={(e) => {
-                    document.getElementById("smartSearch").value = "";
+                    e.preventDefault();
+                    document.getElementById("smartSearch").value = SearchBarInput;
                 }}
                 />
             )}
             {(SearchBarInput !== "" && WatchDataGlobal.watchNamesHaveLoaded) &&  (
                 <StyledContainer>
                 {
-                    displayNames.map((name,index) => {
+                    filteredNames.map((name,index) => {
                         if(name !== undefined && SearchBarInput !== undefined) {
                             return(
-                                <SuggestionItem watchName={name} userInput={SearchBarInput} id={displayIds[index]}></SuggestionItem>
+                                <SuggestionItem watchName={name} userInput={SearchBarInput} id={filteredIds[index]}></SuggestionItem>
                             )
                         }
                     })
@@ -110,8 +93,14 @@ const Wrapper = styled.div`
 `
 
 const StyledContainer = styled.div`
+    position:absolute;
+    left: 31.5vw;
     display:flex;
     flex-direction: column;
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: 25.1vh;
+    width: 32vw;
 `
 
 export default SearchBar;
