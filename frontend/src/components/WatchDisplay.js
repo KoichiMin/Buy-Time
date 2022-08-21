@@ -8,6 +8,7 @@ const WatchDisplay = (pages) => {
     const [pageNumber, setPageNumber] = useState(1);
 
     const watches = [];
+    let maxPages = 0;
 
     pages.pages.forEach((pageObj) => {
         if(pageObj.pageNumber === pageNumber) {
@@ -15,6 +16,7 @@ const WatchDisplay = (pages) => {
                 watches.push(watch);
             }) 
         }
+        maxPages++;
     })
 
     return(
@@ -32,7 +34,9 @@ const WatchDisplay = (pages) => {
                 <PageNumber>{pageNumber}</PageNumber>
                 <RButton onClick={(e) => {
                     e.preventDefault();
-                    setPageNumber(pageNumber + 1);
+                    if(pageNumber < maxPages) {
+                        setPageNumber(pageNumber + 1);
+                    }
                 }}
                 >
                     <StyledRightIcon></StyledRightIcon>
