@@ -302,6 +302,25 @@ const getWatchesNames = async (req,res) => {
 }
 
 
+//PATCH to remove one num of watches in stock for Buy Now
+
+const removeOneStock = async (req, res) => {
+    const itemId = req.params.itemId;
+
+    try {
+        await client.connect();
+        const db = client.db("Items");
+        const item = await db.collection("ItemsData").findOne({_id: Number(itemId)});
+
+        const result = await db.collection("ItemsData").updateOne({_id: item._id}, {$set: {numInStock: item.numInStock - 1}})
+        
+        res.status(200).json({ status: 200, data: result})
+        client.close()
+    } catch (err) {
+        client.close();
+        res.status(404).json({ status: 404, message: err.message })
+    }
+}
 
 
 module.exports = {
@@ -314,4 +333,5 @@ module.exports = {
     getNumWatchesByBodyLocation,
     getNumWatchesByPrice,
     getWatchesNames,
+    removeOneStock,
 }

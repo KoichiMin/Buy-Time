@@ -14,6 +14,7 @@ const {
   getNumWatchesByBodyLocation,
   getNumWatchesByPrice,
   getWatchesNames,
+  removeOneStock,
 } = require("./ItemHandlers.js");
 
 const {
@@ -106,10 +107,14 @@ app.use(function(req, res, next) {
   //GET watches per page per body-location
   app.get("/api/getWatchesByBodyLocation/:numWatchesPerPage/:body_location", getNumWatchesByBodyLocation);
 
-  //Get watches per page under a certain price
+  //GET watches per page under a certain price
   app.get("/api/getWatchesByPrice/:numWatchesPerPage/:price", getNumWatchesByPrice);
 
+  //GET watches by name
   app.get("/api/getWatchesNames", getWatchesNames);
+
+  //PATCH to remove one num of items in stock for buy now
+  app.patch("/api/updatestock/:itemId", removeOneStock);
 
   //************************
   // Endpoints for COMPANIES
