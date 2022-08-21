@@ -21,7 +21,7 @@ const SearchBar = () => {
                 watchNames:data.names,
             }})
         })
-        .catch(console.log("error"));
+        .catch((err) => console.log(err));
     }, []);
 
     let filteredNames = [];
