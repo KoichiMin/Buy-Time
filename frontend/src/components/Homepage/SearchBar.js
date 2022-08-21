@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import SuggestionItem from "./SuggestionItem";
 import { GlobalStates } from "../../GlobalStates";
 

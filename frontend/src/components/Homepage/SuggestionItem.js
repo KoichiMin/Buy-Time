@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { GlobalStates } from "../../GlobalStates";
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 
 const SuggestionItem = ({watchName,userInput,id}) => {
 
