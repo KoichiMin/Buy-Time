@@ -9,7 +9,12 @@ const initialState = {
         watchNamesHaveLoaded:false,
         watchIds:undefined,
         watchNames:undefined,
-    }
+    },
+    DisplayCheckoutModal:false,
+    DisplaySuccessModal:false,
+    DisplayErrorModal:false,
+    ErrorModalData:null,
+    grandTotal:0,
 }
 
 const reducer = (state, action) => {
@@ -26,11 +31,55 @@ const reducer = (state, action) => {
                 WatchDataGlobal:action.data,
             }
         }
+        case 'open-checkout-modal': {
+            return {
+                ...state,
+                DisplayCheckoutModal:true
+            }
+        }
+        case 'close-checkout-modal': {
+            return {
+                ...state,
+                DisplayCheckoutModal:false
+            }
+        }
+        case 'open-success-modal': {
+            return {
+                ...state,
+                DisplaySuccessModal:true
+            }
+        }
+        case 'close-success-modal': {
+            return {
+                ...state,
+                DisplaySuccessModal:false
+            }
+        }
+        case 'open-error-modal': {
+            return {
+                ...state,
+                DisplayErrorModal:true,
+                ErrorModalData:action.data,
+            }
+        }
+        case 'close-error-modal': {
+            return {
+                ...state,
+                DisplayErrorModal:false
+            }
+        }
+        case 'update-grand-total': {
+            return {
+                ...state,
+                grandTotal:action.data,
+            }
+        }
     }
 }
 
 export const GlobalStatesProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState);
+
     const updateSearchBarValue = (data) => {
         dispatch({
             type: 'update-search-bar-input-value',
@@ -45,6 +94,50 @@ export const GlobalStatesProvider = ({children}) => {
         });
     }
 
+    const openCheckoutModal = () => {
+        dispatch({
+            type: 'open-checkout-modal',
+        });
+    }
+
+    const closeCheckoutModal = () => {
+        dispatch({
+            type: 'close-checkout-modal',
+        });
+    }
+
+    const openSuccessModal = () => {
+        dispatch({
+            type: 'open-success-modal',
+        });
+    }
+
+    const closeSuccessModal = () => {
+        dispatch({
+            type: 'close-success-modal',
+        });
+    }
+
+    const openErrorModal = (data) => {
+        dispatch({
+            type: 'open-error-modal',
+            ...data,
+        });
+    }
+
+    const closeErrorModal = () => {
+        dispatch({
+            type: 'close-error-modal',
+        });
+    }
+
+    const updateGrandTotal = (data) => {
+        dispatch({
+            type: 'update-grand-total',
+            ...data,
+        });
+    }
+
     return(
         <GlobalStates.Provider
             value = {{
@@ -53,6 +146,13 @@ export const GlobalStatesProvider = ({children}) => {
                 actions: {
                     updateSearchBarValue,
                     updateWatchDataGlobal,
+                    openCheckoutModal,
+                    closeCheckoutModal,
+                    openSuccessModal,
+                    closeSuccessModal,
+                    openErrorModal,
+                    closeErrorModal,
+                    updateGrandTotal
                 },
             }}
         >

@@ -262,7 +262,7 @@ const checkout = async(req, res) => {
         let failedUpdates = [];
         let successfulUpdates = [];
         serverData.items.forEach((item) => {
-            updates.push({_id:item._id,count:item.count});
+            updates.push({name:item.name,_id:item._id,count:item.count});
         })
 
         //Updates the stocks in items
@@ -282,7 +282,7 @@ const checkout = async(req, res) => {
                     }},
                 );
             } else {
-                failedUpdates.push(update._id);
+                failedUpdates.push(update.name);
             }
         })
         
@@ -292,7 +292,7 @@ const checkout = async(req, res) => {
         res.status(200).json({
             status:"success", 
             warnings:{
-                message: "These items were not updated due to lack of them in stock, their id's are provided in failedUpdates",
+                message: "These items were not updated due to lack of them in stock, their names are provided in failedUpdates",
                 failedUpdates
             },
             successfulUpdates,
