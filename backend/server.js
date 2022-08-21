@@ -13,6 +13,7 @@ const {
   getWatchesByName,
   getNumWatchesByBodyLocation,
   getNumWatchesByPrice,
+  getWatchesNames,
 } = require("./ItemHandlers.js");
 
 const {
@@ -107,6 +108,8 @@ app.use(function(req, res, next) {
 
   //Get watches per page under a certain price
   app.get("/api/getWatchesByPrice/:numWatchesPerPage/:price", getNumWatchesByPrice);
+
+  app.get("/api/getWatchesNames", getWatchesNames);
 
   //************************
   // Endpoints for COMPANIES
