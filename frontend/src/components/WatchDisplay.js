@@ -4,7 +4,7 @@ import {AiFillCaretLeft,AiFillCaretRight} from "react-icons/ai";
 import ItemCard from "./Homepage/ItemCard";
 
 const WatchDisplay = (pages) => {
-    console.log(pages);
+    console.log(pages.pages);
 
     const [pageNumber, setPageNumber] = useState(1);
 
@@ -31,7 +31,7 @@ const WatchDisplay = (pages) => {
             </Navigator>
             <WatchGrid>
                 {
-                    pages.map((pageObj) => {
+                    pages.pages.map((pageObj) => {
                         if(pageObj.pageNumber === pageNumber) {
                             pageObj.watchesInPage.map((watch) => {
                                 return (
