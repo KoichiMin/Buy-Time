@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import CheckOutButton from "../components/Cartpage/CheckOutButton";
 
 const Cart = () => {
     return(
-        <div>Cart</div>
+        <CheckOutButton></CheckOutButton>
     );
 };
 
