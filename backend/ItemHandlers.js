@@ -276,6 +276,33 @@ const getNumWatchesByPrice = async (req,res) => {
     }
 }
 
+/*
+Gets the list of watches names and id
+*/
+const getWatchesNames = async (req,res) => {
+    const userInput = req.params.userInput;
+    try{
+        await client.connect();
+        const db = client.db("Items");
+
+        let AllWatches = await db.collection("ItemsData").find().toArray();
+        let ids = [];
+        let names = AllWatches.map((watch) => {
+            ids.push(watch._id);
+            return watch.name;
+        })
+        
+        client.close()
+        res.status(200).json({status: "success", names, ids})
+    }
+    catch(err){
+        client.close();
+        res.status(400).json({status: 400, error: err.message})
+    }
+}
+
+
+
 
 module.exports = {
     getAllItems, 
@@ -286,4 +313,5 @@ module.exports = {
     getWatchesByName,
     getNumWatchesByBodyLocation,
     getNumWatchesByPrice,
+    getWatchesNames,
 }
