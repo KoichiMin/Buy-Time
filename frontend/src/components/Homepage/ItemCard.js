@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import AddToCart from "./AddToCart";
+import BuyNowModal from "./BuyNowModal";
 
 const ItemCard = ({object}) => {
     console.log(object);
@@ -11,8 +12,8 @@ const ItemCard = ({object}) => {
                     <div>{object.name}</div>
                     <div>{object.price}</div>
                 </Link>
-                    {/* <BuyNow/> */}
                     <AddToCart object={object}/>
+                    <BuyNowModal object={object}/>
                 </div>
         </div>
     )
