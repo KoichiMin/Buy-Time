@@ -50,7 +50,6 @@ const pages = [
 
 const Homepage = () => {
     return(
-
         <Wrapper>
             <WatchDisplay pages={pages}></WatchDisplay>
         </Wrapper>

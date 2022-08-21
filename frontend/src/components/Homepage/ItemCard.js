@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import AddToCart from "./AddToCart";
-const ItemCard = ({object}) => {
 
+const ItemCard = ({object}) => {
+    console.log(object);
     return(
         <div>
-            return(
                 <div>
                 <Link to={`/item-details/${object._id}`}>
                     <img src={object.imageSrc} alt="the watches in the top sellers"/>
@@ -14,9 +14,8 @@ const ItemCard = ({object}) => {
                     {/* <BuyNow/> */}
                     <AddToCart object={object}/>
                 </div>
-            )
         </div>
     )
 }
 
-export default ItemCard
+export default ItemCard;
