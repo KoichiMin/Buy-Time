@@ -1,10 +1,12 @@
-import { GlobalStyleComponent, styled } from "styled-components";
+import { GlobalStyleComponent } from "styled-components";
+import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import BuyNowModal from "./BuyNowModal";
 
 const ItemDetails = () => {
     const {itemId} = useParams()
-    const [itemDetails, setItemDetails] = useState(null);
+    const [object, setObject] = useState(null);
     const [companies, setCompanies] = useState(null);
 
     // fetching to get individual items based off id
@@ -12,7 +14,7 @@ const ItemDetails = () => {
         fetch(`/api/get-item/${itemId}`)
         .then(res => res.json())
         .then(data => {
-            setItemDetails(data.data);
+            setObject(data.data);
         }).catch((err) => console.log(err))
     }, [itemId]);
     
@@ -28,20 +30,19 @@ const ItemDetails = () => {
 
 
     return (
-        itemDetails &&
+        object &&
         companies &&
-        <div>
-            <img src={itemDetails.imageSrc} atl="watch"/>
-            <p>{itemDetails.name}</p>
-            <p>{itemDetails.price}</p>
-            <p>Available: {itemDetails.numInStock}</p>
+        <MainDiv>
+            <img src={object.imageSrc} atl="watch"/>
+            <p>{object.name}</p>
+            <p>{object.price}</p>
 
             {/* mapping over companies array to match its id with the item's company id */}
             {/* when a match occurs, a link to the brand's webpage is created */}
 
             {companies.map((item) => {
                 return( 
-                    item._id === itemDetails.companyId &&
+                    item._id === object.companyId &&
                     <>
                     <p>Brand: <a href={item.url}>{item.name}</a></p>
                     </>
@@ -50,16 +51,19 @@ const ItemDetails = () => {
             })}
 
             {/* conditional rendering depending on if an item is in stock or not */}
-            {itemDetails.numInStock > 0 ?
+            {object.numInStock > 0 ?
             <>
-            <button>Buy Now</button> 
+            <BuyNowModal object={object}/> 
             <button>Add to Cart</button>
             </>
             :
             <button disabled={true}>Out of Stock</button>
         }
-        </div>
+        </MainDiv>
     );
 };
 
+const MainDiv = styled.div`
+    margin-left: 20vw;
+`
 export default ItemDetails;
