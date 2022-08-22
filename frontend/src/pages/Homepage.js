@@ -4,6 +4,10 @@ import ItemCard from "../components/Homepage/ItemCard";
 //import Copy from "../components/Homepage/Copy"
 import WatchDisplay from "../components/WatchDisplay";
 
+import { useContext } from "react";
+import { GlobalStates } from "../GlobalStates";
+import CategoryManager from "../components/Homepage/CategoryManager";
+
 // Dummy data for testing. Thats what you will have to pass to WatchDisplay Illie
 const pages = [
     {
@@ -49,9 +53,11 @@ const pages = [
 ]
 
 const Homepage = () => {
+    const {dispatch, test} = useContext(GlobalStates);
+    console.log(test);
     return(
         <Wrapper>
-            <WatchDisplay pages={pages}></WatchDisplay>
+            <CategoryManager />
         </Wrapper>
     );
 };

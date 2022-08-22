@@ -10,6 +10,7 @@ const WatchDisplay = (pages) => {
     const watches = [];
     let maxPages = 0;
 
+    console.log(pages);
     if(pages !== undefined) {
         pages.pages.forEach((pageObj) => {
             if(pageObj.pageNumber === pageNumber) {
