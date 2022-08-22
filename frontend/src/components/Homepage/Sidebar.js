@@ -1,8 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
-
-import CategoryManager from "./CategoryManager";
 import { GlobalStates } from "../../GlobalStates";
+import { Link } from "react-router-dom";
 
 const Sidebar = (props) => {
     const {
@@ -29,7 +28,7 @@ const Sidebar = (props) => {
             categories.map((category) => {
                 {/* console.log(category); */}
                 return(
-                    <Button onClick={(e) => {updateCategory({data:category})}}>{category}</Button>
+                    <StyledLink to={"/"} onClick={(e) => {updateCategory({data:category})}}>{category}</StyledLink>
                 )}
             )}
         </StyledSidebar>
@@ -51,7 +50,7 @@ const StyledSidebar = styled.div`
     overflow-x: hidden;
 `;
 
-const Button = styled.button`
+const StyledLink = styled(Link)`
     align-items: center;
     margin: 10px 0 10px;
     padding: 4px 8px 4px 8px;
@@ -59,18 +58,12 @@ const Button = styled.button`
     width: max-content;
     font-size: 20px;
     border: none;
-
-&.active {
-    color: var(--color-font-header);
-}
+    text-decoration: none;
+    background-color: lightblue;
 
 &:hover {
     color: var(--color-font-header);
     background-color: #EFE9FE;
 }
 
-span {
-    display: block;
-    line-height: 1;
-}
 `;
