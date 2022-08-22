@@ -15,6 +15,7 @@ const initialState = {
     DisplayErrorModal:false,
     ErrorModalData:null,
     grandTotal:0,
+    SearchResults:"",
 }
 
 const reducer = (state, action) => {
@@ -72,6 +73,12 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 grandTotal:action.data,
+            }
+        }
+        case 'update-search-results': {
+            return {
+                ...state,
+                SearchResults:action.data,
             }
         }
     }
@@ -138,6 +145,13 @@ export const GlobalStatesProvider = ({children}) => {
         });
     }
 
+    const updateSearchResults = (data) => {
+        dispatch({
+            type: 'update-search-results',
+            ...data,
+        });
+    }
+
     return(
         <GlobalStates.Provider
             value = {{
@@ -152,7 +166,8 @@ export const GlobalStatesProvider = ({children}) => {
                     closeSuccessModal,
                     openErrorModal,
                     closeErrorModal,
-                    updateGrandTotal
+                    updateGrandTotal,
+                    updateSearchResults
                 },
             }}
         >

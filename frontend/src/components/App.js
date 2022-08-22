@@ -7,6 +7,7 @@ import Sidebar from "./Homepage/Sidebar";
 import Homepage from "../pages/Homepage";
 import Cart from "../pages/Cart";
 import ItemDetails from "./Homepage/ItemDetails";
+import SearchResultPage from "../pages/SearchResultPage";
 
 const App = () => {
 
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/" element={<Homepage />}/>
           <Route path="/item-details/:itemId" element={<ItemDetails />}/>
           <Route path="/cart" element={<Cart />}/>
+          <Route path="/searchResults" element={<SearchResultPage />}/>
         </Routes>
       </Main>
     </BrowserRouter>

@@ -3,7 +3,6 @@ import AddToCart from "./AddToCart";
 import BuyNowModal from "./BuyNowModal";
 
 const ItemCard = ({object}) => {
-    console.log(object);
     return(
         <div>
                 <div>
