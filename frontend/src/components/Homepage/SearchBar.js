@@ -2,12 +2,15 @@ import styled from "styled-components";
 import { useEffect, useContext } from "react";
 import SuggestionItem from "./SuggestionItem";
 import { GlobalStates } from "../../GlobalStates";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
 
+    let navigate = useNavigate();
+
     const {
         state:{SearchBarInput,WatchDataGlobal},
-        actions:{updateSearchBarValue,updateWatchDataGlobal},
+        actions:{updateSearchBarValue,updateWatchDataGlobal,updateSearchResults},
     } = useContext(GlobalStates);
 
     useEffect(() => {
@@ -58,6 +61,16 @@ const SearchBar = () => {
                 onClick={(e) => {
                     e.preventDefault();
                     document.getElementById("smartSearch").value = SearchBarInput;
+                }}
+                onKeyDown= {(e) => {
+                    if(e.code === "Enter") {
+                        fetch(`/api/getWatchesByName/6/${SearchBarInput}`)
+                        .then(res => res.json())
+                        .then(data => {
+                            updateSearchResults({data:data.pages});
+                            navigate("/searchResults");
+                        })
+                    }
                 }}
                 />
             )}

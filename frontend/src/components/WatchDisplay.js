@@ -10,14 +10,16 @@ const WatchDisplay = (pages) => {
     const watches = [];
     let maxPages = 0;
 
-    pages.pages.forEach((pageObj) => {
-        if(pageObj.pageNumber === pageNumber) {
-            pageObj.watchesInPage.forEach((watch) => {
-                watches.push(watch);
-            }) 
-        }
-        maxPages++;
-    })
+    if(pages !== undefined) {
+        pages.pages.forEach((pageObj) => {
+            if(pageObj.pageNumber === pageNumber) {
+                pageObj.watchesInPage.forEach((watch) => {
+                    watches.push(watch);
+                }) 
+            }
+            maxPages++;
+        })
+    }
 
     return(
         <Wrapper>
