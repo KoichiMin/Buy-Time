@@ -145,7 +145,7 @@ Provide the cart's id and the item's id
 */
 const deleteItemCart = async(req, res) => {
     const cartId = req.params.cartId;
-    const itemId = req.params.itemId;
+    const itemId = Number(req.params.itemId);
     try {
         await client.connect();
         const query = {_id:cartId};
