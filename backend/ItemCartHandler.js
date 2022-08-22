@@ -305,6 +305,30 @@ const checkout = async(req, res) => {
     }
 }
 
+//PATCH to remove all the items from the specific cart
+
+const removeItems = async (req, res) => {
+    const cartId = req.params.cartId;
+    // 58bf7fa8-2892-46dd-a0dc-0f95188acea1
+    try {
+        await client.connect();
+        const db = client.db("Carts");
+        const serverData = await db.collection("CartsData").findOne({_id: cartId});
+
+        const data = serverData.items;
+        if (data.length > 0) {
+            const resetArray = await db.collection("CartsData").updateOne({_id: serverData._id}, {$set: {items: []}})
+            res.status(200).json({status:"success", data: resetArray});
+        } else {
+            throw new Error("No items in cart.")
+        }
+        client.close();
+    } catch (err) {
+        client.close();
+        res.status(404).json({status:"error", message:err.message});
+    }
+}
+
 module.exports = {
     createCart,
     getCartItems,
@@ -314,5 +338,6 @@ module.exports = {
     deleteCart,
     getTotalCartCost,
     checkout,
+    removeItems,
 };
 
