@@ -17,10 +17,10 @@ const App = () => {
       <Sidebar />
       <Main>
         <Routes>
-          <Route path="/" element={<Homepage />}/>
-          <Route path="/item-details/:itemId" element={<ItemDetails />}/>
-          <Route path="/cart" element={<Cart />}/>
-          <Route path="/searchResults" element={<SearchResultPage />}/>
+          <Route exact path="/" element={<Homepage />}/>
+          <Route exact path="/item-details/:itemId" element={<ItemDetails />}/>
+          <Route exact path="/cart" element={<Cart />}/>
+          <Route exact path="/searchResults" element={<SearchResultPage />}/>
         </Routes>
       </Main>
     </BrowserRouter>
