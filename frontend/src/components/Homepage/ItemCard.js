@@ -11,8 +11,15 @@ const ItemCard = ({object}) => {
                     <div>{object.name}</div>
                     <div>{object.price}</div>
                 </Link>
-                    <AddToCart object={object}/>
-                    <BuyNowModal object={object}/>
+
+                {object.numInStock > 0 ?
+                <>
+                <BuyNowModal object={object}/> 
+                <AddToCart object={object} />
+                </>
+                :
+                <button disabled={true}>Out of Stock</button>
+                }
                 </div>
         </div>
     )

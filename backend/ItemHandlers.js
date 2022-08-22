@@ -312,9 +312,12 @@ const removeOneStock = async (req, res) => {
         const db = client.db("Items");
         const item = await db.collection("ItemsData").findOne({_id: Number(itemId)});
 
-        const result = await db.collection("ItemsData").updateOne({_id: item._id}, {$set: {numInStock: item.numInStock - 1}})
-        
-        res.status(200).json({ status: 200, data: result})
+        if(item.numInStock >= 1) {
+            const result = await db.collection("ItemsData").updateOne({_id: item._id}, {$set: {numInStock: item.numInStock - 1}})
+            res.status(200).json({ status: 200, data: result})
+        } else {
+            throw new Error("No more in stock.")
+        }
         client.close()
     } catch (err) {
         client.close();
