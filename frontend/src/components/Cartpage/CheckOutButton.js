@@ -8,10 +8,12 @@ import ErrorModal from "./ErrorModal";
 
 const CheckOutButton = () => {
 
-    const {
-        actions:{openCheckoutModal},
+    const { 
+        actions:{openCheckoutModal, updateGrandTotal},
     } = useContext(GlobalStates);
-
+    
+    // useEffect(() => {
+    // }, []);
     return(
         <>
         <CheckoutModal></CheckoutModal>
@@ -20,7 +22,13 @@ const CheckOutButton = () => {
         <StyledButton onClick={(e) => {
             e.preventDefault();
             openCheckoutModal();
-        }}
+            fetch("/api/get-total/58bf7fa8-2892-46dd-a0dc-0f95188acea1")
+            .then(res => res.json())
+            .then((data) => {
+                console.log(data)
+                updateGrandTotal({data:data.totalCost});
+            })
+            }}
         >
             Checkout
         </StyledButton>

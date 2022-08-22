@@ -10,13 +10,7 @@ const CheckoutModal = () => {
         actions:{openSuccessModal,closeCheckoutModal,openErrorModal,updateGrandTotal},
     } = useContext(GlobalStates);
 
-    useEffect(() => {
-        fetch("/api/get-total/58bf7fa8-2892-46dd-a0dc-0f95188acea1")
-        .then(res => res.json())
-        .then((data) => {
-            updateGrandTotal({data:data.totalCost});
-        })
-    }, []);
+
 
     return(
         <Dialog
@@ -27,7 +21,7 @@ const CheckoutModal = () => {
                 <StyledTitle>Payment</StyledTitle>
                 <Container>
                     <InputContainer>
-                        <h1>{`Total Amout: $${grandTotal}`}</h1>
+                        <h1>{`Total Amount: $${grandTotal}`}</h1>
                     </InputContainer>
                     <InputContainer>
                         <StyledLabel>Card Holder Name</StyledLabel>
