@@ -26,6 +26,7 @@ const {
     deleteCart,
     getTotalCartCost,
     checkout,
+    removeItems,
 } = require("./ItemCartHandler.js")
 
 const {
@@ -81,6 +82,9 @@ app.use(function(req, res, next) {
 
   //PATCH checks out a cart
   app.patch("/api/checkout", checkout);
+
+  //PATCH to remove all cart items
+  app.patch("/api/remove-items/:cartId", removeItems);
 
   //******************************
   // Endpoints for INVENTORY ITEMS
