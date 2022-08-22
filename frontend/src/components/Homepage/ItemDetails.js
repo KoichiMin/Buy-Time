@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import BuyNowModal from "./BuyNowModal";
+import AddToCart from "./AddToCart";
 
 const ItemDetails = () => {
     const {itemId} = useParams()
@@ -54,11 +55,11 @@ const ItemDetails = () => {
             {object.numInStock > 0 ?
             <>
             <BuyNowModal object={object}/> 
-            <button>Add to Cart</button>
+            <AddToCart object={object} />
             </>
             :
             <button disabled={true}>Out of Stock</button>
-        }
+            }
         </MainDiv>
     );
 };

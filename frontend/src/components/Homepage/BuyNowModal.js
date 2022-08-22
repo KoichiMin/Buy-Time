@@ -54,7 +54,7 @@ const BuyNowModal = ({ object }) => {
 
     return(
         <>
-            <button onClick={openModal}>Buy now</button>
+            <button onClick={openModal}>buy now</button>
             <Modal 
             isOpen={modalIsOpen}
             onAfterOpen={afterOpenModal}
@@ -65,6 +65,7 @@ const BuyNowModal = ({ object }) => {
             {confirmed === false ?
             <>
                 <p>Please enter your details to complete the purchase.</p>
+                <p>Total: {object.price}</p>
                 <button onClick={closeModal}>close</button>
                 <form onSubmit={handleSubmit}>
                     <input 
