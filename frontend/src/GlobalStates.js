@@ -16,6 +16,7 @@ const initialState = {
     ErrorModalData:null,
     grandTotal:0,
     SearchResults:"",
+    category:"Fitness",
 }
 
 const reducer = (state, action) => {
@@ -79,6 +80,12 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 SearchResults:action.data,
+            }
+        }
+        case 'update-category': {
+            return {
+                ...state,
+                category:action.data
             }
         }
     }
@@ -152,6 +159,13 @@ export const GlobalStatesProvider = ({children}) => {
         });
     }
 
+    const updateCategory = (data) => {
+        dispatch({
+            type: 'update-category',
+            ...data,
+        });
+    }
+
     return(
         <GlobalStates.Provider
             value = {{
@@ -167,7 +181,8 @@ export const GlobalStatesProvider = ({children}) => {
                     openErrorModal,
                     closeErrorModal,
                     updateGrandTotal,
-                    updateSearchResults
+                    updateSearchResults,
+                    updateCategory,
                 },
             }}
         >

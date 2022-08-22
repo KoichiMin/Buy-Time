@@ -12,7 +12,7 @@ const Header = () => {
                 <p>BUY TIME</p>
             </Link>
             <Container>
-                <SearchBar></SearchBar>
+                <SearchBar />
                 <button>Search</button>
             </Container>
             <Link to="/cart">
