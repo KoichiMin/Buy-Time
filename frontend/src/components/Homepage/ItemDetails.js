@@ -34,7 +34,7 @@ const ItemDetails = () => {
             })
             .catch((err) => console.log(err))
         }
-    }, [WatchDataGlobal.watchDataHasLoaded]);
+    }, [WatchDataGlobal.watchDataHasLoaded && itemId]);
     
 
     return (
