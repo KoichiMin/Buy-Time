@@ -1,4 +1,4 @@
-
+import styled from "styled-components"
 
 const AddToCart = ({object}) =>{
     const handleCart = (item) =>{
@@ -15,8 +15,27 @@ const AddToCart = ({object}) =>{
         })                            
 }
     return(
-        <button onClick={() => handleCart(object)}>add to cart</button>
+        <StyledButton onClick={() => handleCart(object)} >add to cart</StyledButton>
     )
 }
 
 export default AddToCart
+
+const StyledButton = styled.button`
+width: 5vw;
+font-size: 15px;
+border:none;
+color: #F9F7F7;
+border-radius: 3px;
+font-weight: 2px;
+background-color: #3F72AF;
+&:hover {
+    opacity: 0.7;
+}
+
+&:active {
+    /* opacity: 0.8; */
+    /* box-shadow: 0 5px #666; */
+    transform: translateY(2px);
+    }
+`
