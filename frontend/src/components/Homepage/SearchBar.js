@@ -24,7 +24,9 @@ const SearchBar = () => {
                 categories:data.categories,
             }})
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            console.log(err);
+        });
     }, []);
 
     let filteredNames = [];
