@@ -27,7 +27,7 @@ const CategoryManager = () => {
                 console.log(err);
             })
         }
-    }, [category && WatchDataGlobal.watchDataHasLoaded]);
+    }, [WatchDataGlobal.watchDataHasLoaded && category]);
 
     if(WatchDataGlobal.watchDataHasLoaded && load && pages !== undefined) {
         return(
@@ -35,7 +35,7 @@ const CategoryManager = () => {
         )
     } else {
         return(
-            <CircularProgress></CircularProgress>
+            <CircularProgress/>
         )
     }
 
