@@ -105,6 +105,7 @@ const Wrapper = styled.div`
         font-size: 20px;
         margin:1vw;
     }
+    z-index: 1;
 `
 
 const StyledContainer = styled.div`

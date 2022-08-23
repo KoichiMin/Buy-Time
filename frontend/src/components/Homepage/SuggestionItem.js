@@ -44,7 +44,7 @@ const SuggestionItem = ({watchName,userInput,id}) => {
 }
 
 const StyledLink = styled(Link)`
-    background-color: rgb(187,222,251,0.5);
+    background-color: rgb(187,222,251);
     text-decoration: none;
     color:#0d47a1;
     padding-top:2vh;
@@ -57,7 +57,7 @@ const StyledLink = styled(Link)`
     border-bottom: 0px;
     &:hover{
         cursor: pointer;
-        background-color:rgb(100,181,246,0.5);
+        background-color:rgb(100,181,246);
     }
 `
 
