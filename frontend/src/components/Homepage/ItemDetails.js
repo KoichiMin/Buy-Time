@@ -20,7 +20,7 @@ const ItemDetails = () => {
     //ERROR for this useEffect - sidebar and searchbar not working
 
     useEffect(() => {
-        if(WatchDataGlobal.watchDataHasLoaded && SideBarFetchHasLoaded) {
+        if(WatchDataGlobal.watchDataHasLoaded) {
             fetch(`/api/get-item/${itemId}`)
             .then(res => res.json())
             .then(data => {
@@ -34,7 +34,7 @@ const ItemDetails = () => {
             })
             .catch((err) => console.log(err))
         }
-    }, [WatchDataGlobal.watchDataHasLoaded && SideBarFetchHasLoaded]);
+    }, [WatchDataGlobal.watchDataHasLoaded]);
     
 
     return (

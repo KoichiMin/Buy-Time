@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import {FcPlus} from "react-icons/fc";
 
 const CartItem = ({singleItem, setChange, change}) =>{
 
@@ -42,17 +43,19 @@ const CartItem = ({singleItem, setChange, change}) =>{
 
     return(
         <Container>
-            <InnerContainer1>
+            <ElementContainer>
                 <div>{singleItem.name}</div>
-            </InnerContainer1>
+            </ElementContainer>
                 <div>{singleItem.category}</div>
-                <div>Item x {singleItem.count}</div>
+                <div>{singleItem.count}</div>
                 <div>{`${singleItem.price} `}</div>
                 <div>{`$${(parsedSingleItemPrice * singleItem.count).toFixed(2)}`}</div>
-            <InnerContainer3>
-                <button onClick={() => handleMinus(singleItem._id)}>-</button>
-                <button onClick={() => handlePlus(singleItem)}>+</button>
-            </InnerContainer3>
+            <ButtonContainer>
+                <StyledButton onClick={() => handleMinus(singleItem._id)}>
+                    <StyledPlus></StyledPlus>
+                </StyledButton>
+                <StyledButton onClick={() => handlePlus(singleItem)}></StyledButton>
+            </ButtonContainer>
         </Container>
     )
 }
@@ -61,29 +64,32 @@ const Container = styled.div`
     display: grid;
     align-items: center;
     width: 54vw;
-    grid-template-columns: 30vw 5vw 5vw 5vw 5vw 5vw;
+    grid-template-columns: 28vw 5vw 5vw 7vw 5vw 5vw;
     margin-left: 0.4vw;
     margin-right: 1vw;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
 `
 
-const InnerContainer1 = styled.div`
-
-`
-
-const InnerContainer2 = styled.div`
-
-`
-
-const InnerContainer3 = styled.div`
+const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
 `
 
-const SubContainer = styled.div`
-    display: flex;
-    flex-direction: row;
+const ElementContainer = styled.div`
+    
+`
+
+const StyledButton = styled.button`
+    width:1vw;
+    height:2vh;
+    margin:0.2vh;
+`
+
+const StyledPlus = styled(FcPlus)`
+    width:1vw;
+    height: 2vh;
+    position:relative;
+    left:-0.35vw;
+    top:-1.65vh;
 `
 
 export default CartItem;
