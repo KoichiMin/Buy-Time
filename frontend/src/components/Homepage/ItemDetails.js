@@ -11,6 +11,8 @@ const ItemDetails = () => {
     const [companies, setCompanies] = useState(null);
 
     // fetching to get individual items based off id
+    //ERROR for this useEffect - sidebar and searchbar not working
+
     useEffect(() => {
         fetch(`/api/get-item/${itemId}`)
         .then(res => res.json())
@@ -19,7 +21,7 @@ const ItemDetails = () => {
         }).catch((err) => console.log(err))
     }, [itemId]);
     
-    //fetching to get list of all companies
+    // //fetching to get list of all companies
     useEffect(() => {
         fetch(`/api/get-all-companies`)
         .then(res => res.json())

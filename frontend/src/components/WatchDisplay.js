@@ -1,16 +1,22 @@
 import styled from "styled-components"
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {AiFillCaretLeft,AiFillCaretRight} from "react-icons/ai";
 import ItemCard from "./Homepage/ItemCard";
+import { useEffect } from "react";
+import {GlobalStates} from "../GlobalStates";
 
 const WatchDisplay = (pages) => {
 
     const [pageNumber, setPageNumber] = useState(1);
+    const {state: {category}} = useContext(GlobalStates);
 
     const watches = [];
     let maxPages = 0;
 
-    console.log(pages);
+    useEffect(() => {
+        setPageNumber(1)
+    }, [category])
+
     if(pages !== undefined) {
         pages.pages.forEach((pageObj) => {
             if(pageObj.pageNumber === pageNumber) {
@@ -21,6 +27,7 @@ const WatchDisplay = (pages) => {
             maxPages++;
         })
     }
+
 
     return(
         <Wrapper>
