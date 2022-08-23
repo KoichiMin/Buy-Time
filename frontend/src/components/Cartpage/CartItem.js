@@ -1,8 +1,14 @@
 import styled from "styled-components";
 import {AiFillPlusCircle} from "react-icons/ai";
 import {AiFillMinusCircle} from "react-icons/ai";
+import {GlobalStates} from "../../GlobalStates";
+import { useContext } from "react";
 
 const CartItem = ({singleItem, setChange, change}) =>{
+
+    const {
+        actions:{openErrorModal},
+    } = useContext(GlobalStates)
 
     const handleMinus = (itemId) =>{
         fetch(`/api/delete-cart-item/${"58bf7fa8-2892-46dd-a0dc-0f95188acea1"}/${itemId}`, {
@@ -30,6 +36,9 @@ const CartItem = ({singleItem, setChange, change}) =>{
         })
         .then((res) => res.json())
         .then((data) =>{
+            if(data.message === "Cannot add more of this item to cart, out of stock") {
+                openErrorModal({data:[singleItem.name]})
+            }
             console.log(data)
             console.log("it worked! Adding item to the cart")                    
             if(change){
@@ -37,7 +46,10 @@ const CartItem = ({singleItem, setChange, change}) =>{
             } else{
                 setChange(true)
             }
-        }) 
+        })
+        .catch((err) => {
+            console.log(err);
+        }); 
     }
 
     const parsedSingleItemPrice = parseFloat(singleItem.price.slice(1,singleItem.price.length));
