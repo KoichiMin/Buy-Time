@@ -4,33 +4,38 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import BuyNowModal from "./BuyNowModal";
 import AddToCart from "./AddToCart";
+import {GlobalStates} from "../../GlobalStates";
+import { useContext } from "react";
 
 const ItemDetails = () => {
     const {itemId} = useParams()
     const [object, setObject] = useState(null);
     const [companies, setCompanies] = useState(null);
 
+    const {
+        state:{WatchDataGlobal,SideBarFetchHasLoaded}
+    } = useContext(GlobalStates);
+
     // fetching to get individual items based off id
     //ERROR for this useEffect - sidebar and searchbar not working
 
     useEffect(() => {
-        fetch(`/api/get-item/${itemId}`)
-        .then(res => res.json())
-        .then(data => {
-            setObject(data.data);
-        }).catch((err) => console.log(err))
-    }, [itemId]);
+        if(WatchDataGlobal.watchDataHasLoaded && SideBarFetchHasLoaded) {
+            fetch(`/api/get-item/${itemId}`)
+            .then(res => res.json())
+            .then(data => {
+                setObject(data.data);
+                fetch(`/api/get-all-companies`)
+                .then(res => res.json())
+                .then(data => {
+                    setCompanies(data.data)
+                })
+                .catch((err) => console.log(err))
+            })
+            .catch((err) => console.log(err))
+        }
+    }, [WatchDataGlobal.watchDataHasLoaded && SideBarFetchHasLoaded]);
     
-    // //fetching to get list of all companies
-    useEffect(() => {
-        fetch(`/api/get-all-companies`)
-        .then(res => res.json())
-        .then(data => {
-            setCompanies(data.data)
-        }).catch((err) => console.log(err))
-    }, []);
-    
-
 
     return (
         object &&
