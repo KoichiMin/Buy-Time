@@ -17,7 +17,7 @@ const WatchDisplay = (pages) => {
         setPageNumber(1)
     }, [category])
 
-    if(pages !== undefined) {
+    if(pages.pages !== undefined) {
         pages.pages.forEach((pageObj) => {
             if(pageObj.pageNumber === pageNumber) {
                 pageObj.watchesInPage.forEach((watch) => {
