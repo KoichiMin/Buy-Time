@@ -28,7 +28,7 @@ const StyledSidebar = styled.div`
     display: flex;
     flex-direction: column;
     width: 20vw;
-    padding: 10vh 2vw 0 4vw;
+    padding: 10vh 2vw 0 5vw;
     height: 100%;
     position: fixed;
     overflow-x: hidden;
@@ -43,11 +43,9 @@ const StyledLink = styled(Link)`
     font-size: 20px;
     border: none;
     text-decoration: none;
-    background-color: lightblue;
-
+    
 &:hover {
-    color: var(--color-font-header);
+    color: var(--color-light-blue);
     background-color: #EFE9FE;
 }
-
 `;
