@@ -11,7 +11,7 @@ const Sidebar = (props) => {
 
     return(
         <StyledSidebar>
-            {WatchDataGlobal.watchDataHasLoaded &&
+            {WatchDataGlobal.watchDataHasLoaded && WatchDataGlobal.categories !== undefined &&
             WatchDataGlobal.categories.map((category) => {
                 {/* console.log(category); */}
                 return(

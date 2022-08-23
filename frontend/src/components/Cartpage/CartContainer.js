@@ -77,7 +77,9 @@ const Wrapper = styled.div`
 
 const Header = styled.div`
     display: grid;
-    grid-template-columns: 30vw 5vw 5vw 7vw 5vw 5vw;
+    grid-template-columns: 28vw 5vw 5vw 7vw 5vw 5vw;
+    margin-left: 0.4vw;
+    margin-top: 1vh;
 `
 
 export default CartContainer;
