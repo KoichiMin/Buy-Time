@@ -37,20 +37,53 @@ const CartItem = ({singleItem, setChange, change}) =>{
             }
         }) 
     }
+
+    const parsedSingleItemPrice = parseFloat(singleItem.price.slice(1,singleItem.price.length));
+
     return(
-        <div>
-            <div>Item x {singleItem.count}</div>
-            <div>
+        <Container>
+            <InnerContainer1>
                 <div>{singleItem.name}</div>
-                <div>{singleItem.price}</div>
+            </InnerContainer1>
                 <div>{singleItem.category}</div>
-            </div>
-            <div>
+                <div>Item x {singleItem.count}</div>
+                <div>{`${singleItem.price} `}</div>
+                <div>{`$${(parsedSingleItemPrice * singleItem.count).toFixed(2)}`}</div>
+            <InnerContainer3>
                 <button onClick={() => handleMinus(singleItem._id)}>-</button>
                 <button onClick={() => handlePlus(singleItem)}>+</button>
-            </div>
-        </div>
+            </InnerContainer3>
+        </Container>
     )
 }
 
-export default CartItem
+const Container = styled.div`
+    display: grid;
+    align-items: center;
+    width: 54vw;
+    grid-template-columns: 30vw 5vw 5vw 5vw 5vw 5vw;
+    margin-left: 0.4vw;
+    margin-right: 1vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+`
+
+const InnerContainer1 = styled.div`
+
+`
+
+const InnerContainer2 = styled.div`
+
+`
+
+const InnerContainer3 = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+
+const SubContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+
+export default CartItem;

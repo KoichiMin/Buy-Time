@@ -39,8 +39,9 @@ const CheckOutButton = () => {
 }
 
 const StyledButton = styled.button`
-    position:absolute;
-    left:30vw;
+    position:relative;
+    top:5vh;
+    left:19vw;
     background-color: #fcb900;
     border-width: 0;
     border-radius: 2vw;

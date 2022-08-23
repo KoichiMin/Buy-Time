@@ -277,23 +277,26 @@ const getNumWatchesByPrice = async (req,res) => {
 }
 
 /*
-Gets the list of watches names and id
+Gets the list of watches names and id and the categories
 */
 const getWatchesNames = async (req,res) => {
-    const userInput = req.params.userInput;
     try{
         await client.connect();
         const db = client.db("Items");
 
         let AllWatches = await db.collection("ItemsData").find().toArray();
         let ids = [];
+        let categories = [];
         let names = AllWatches.map((watch) => {
             ids.push(watch._id);
+            if(!categories.includes(watch.category)) {
+                categories.push(watch.category);
+            }
             return watch.name;
         })
         
         client.close()
-        res.status(200).json({status: "success", names, ids})
+        res.status(200).json({status: "success", names, ids, categories})
     }
     catch(err){
         client.close();
