@@ -10,13 +10,11 @@ const CategoryManager = () => {
     const [pages, setPages] = useState(null);
     const [load, setLoad] = useState(false);
 
-    console.log(category);
     useEffect(() => {
         fetch(`/api/getWatchesByCategory/6/${category}`)
         .then((res) => res.json())
         .then((data) => {
             setPages(data);
-            console.log(data);
             setLoad(true);
         })
     }, [category]);

@@ -16,10 +16,9 @@ const SearchBar = () => {
     useEffect(() => {
         fetch(`/api/getWatchesNames`)
         .then(res => res.json())
-        .then((data) => {
+        .then((data) => {
             updateWatchDataGlobal({ data: {
-                watchDataHasLoaded:false,
-                watchNamesHaveLoaded:true,
+                watchDataHasLoaded:true,
                 watchIds:data.ids,
                 watchNames:data.names,
             }})
@@ -39,7 +38,7 @@ const SearchBar = () => {
         })    
     }
 
-    if(!WatchDataGlobal.watchNamesHaveLoaded) {
+    if(!WatchDataGlobal.watchDataHasLoaded) {
         return(
             <Wrapper>
             <input disabled id={"smartSearchDisabled"}
@@ -51,7 +50,7 @@ const SearchBar = () => {
     } else {
         return(
             <Wrapper>
-            {WatchDataGlobal.watchNamesHaveLoaded && (
+            {WatchDataGlobal.watchDataHasLoaded && (
                 <input id={"smartSearch"}
                 type="text"
                 defaultValue={"What are you looking for?"}
@@ -74,7 +73,7 @@ const SearchBar = () => {
                 }}
                 />
             )}
-            {(SearchBarInput !== "" && WatchDataGlobal.watchNamesHaveLoaded) &&  (
+            {(SearchBarInput !== "" && WatchDataGlobal.watchDataHasLoaded) &&  (
                 <StyledContainer>
                 {
                     filteredNames.map((name,index) => {

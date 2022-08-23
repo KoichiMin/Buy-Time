@@ -6,7 +6,6 @@ const initialState = {
     SearchBarInput:"",
     WatchDataGlobal: {
         watchDataHasLoaded:false,
-        watchNamesHaveLoaded:false,
         watchIds:undefined,
         watchNames:undefined,
     },
@@ -17,6 +16,7 @@ const initialState = {
     grandTotal:0,
     SearchResults:"",
     category:"Fitness",
+    SideBarFetchHasLoaded:false,
 }
 
 const reducer = (state, action) => {
@@ -86,6 +86,12 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 category:action.data
+            }
+        }
+        case 'side-bar-has-loaded': {
+            return {
+                ...state,
+                SideBarFetchHasLoaded:true,
             }
         }
     }
@@ -166,6 +172,12 @@ export const GlobalStatesProvider = ({children}) => {
         });
     }
 
+    const sideBarHasLoaded = () => {
+        dispatch({
+            type: 'side-bar-has-loaded'
+        })
+    }
+
     return(
         <GlobalStates.Provider
             value = {{
@@ -183,6 +195,7 @@ export const GlobalStatesProvider = ({children}) => {
                     updateGrandTotal,
                     updateSearchResults,
                     updateCategory,
+                    sideBarHasLoaded,
                 },
             }}
         >

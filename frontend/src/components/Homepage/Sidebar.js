@@ -5,20 +5,23 @@ import { Link } from "react-router-dom";
 
 const Sidebar = (props) => {
     const {
-        actions:{updateCategory},
+        state:{WatchDataGlobal},
+        actions:{updateCategory,sideBarHasLoaded},
     } = useContext(GlobalStates);
     const [load, setLoad] = useState(false);
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        fetch("/api/categories")
-        .then((res) => res.json())
-        .then((data) => {
+        if(WatchDataGlobal.watchDataHasLoaded){
+            fetch("/api/categories")
+            .then((res) => res.json())
+            .then((data) => {
             setCategories(data.categories);
-            console.log(data);
             setLoad(true);
-        })
-    }, []);
+            sideBarHasLoaded();
+            })
+        }
+    }, [WatchDataGlobal.watchDataHasLoaded]);
 
     // console.log(categories);
     // console.log(load);
