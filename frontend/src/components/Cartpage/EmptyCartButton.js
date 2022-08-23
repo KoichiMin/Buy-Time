@@ -2,23 +2,8 @@ import styled from "styled-components";
 import { GlobalStyleComponent } from "styled-components";
 import { useEffect, useState } from "react";
 
-const EmptyCartButton = () => {
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        fetch("api/remove-items/58bf7fa8-2892-46dd-a0dc-0f95188acea1", {
-            method: "PATCH",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        .then((res) => res.json())
-        .then((json) => 
-        console.log(json)
-        )
-    }
+const EmptyCartButton = ({ handleClick }) => {
 
     return(
         <>

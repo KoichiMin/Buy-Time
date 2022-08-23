@@ -2,8 +2,11 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { GlobalStates } from "../../GlobalStates";
 import { Dialog } from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 const ErrorModal = () => {
+
+    const navigate = useNavigate();
 
     const {
         state:{DisplayErrorModal,ErrorModalData},
@@ -32,6 +35,7 @@ const ErrorModal = () => {
                     <CloseButton onClick={(e) => {
                         e.preventDefault();
                         closeErrorModal();
+                        navigate("/cart")
                     }}  
                     >
                         Close
