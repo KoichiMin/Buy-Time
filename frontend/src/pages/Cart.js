@@ -1,16 +1,17 @@
 import styled from "styled-components";
-import CheckOutButton from "../components/Cartpage/CheckOutButton";
 import CartContainer from "../components/Cartpage/CartContainer";
 // import EmptyCartButton from "../components/Cartpage/EmptyCartButton";
 
 const Cart = () => {
     return(
-        <>
+        <Wrapper>
         <CartContainer/>
-        <CheckOutButton></CheckOutButton>
-        {/* <EmptyCartButton></EmptyCartButton> */}
-        </>
+        </Wrapper>
     );
 };
+
+const Wrapper = styled.div`
+    background-color: #FAFAFA;
+`
 
 export default Cart;

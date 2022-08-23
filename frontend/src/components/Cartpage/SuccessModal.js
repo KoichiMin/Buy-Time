@@ -2,15 +2,12 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { GlobalStates } from "../../GlobalStates";
 import { Dialog } from "@mui/material";
-import {useNavigate} from "react-router-dom";
-const SuccessModal = () => {
+const SuccessModal = ({change,setChange}) => {
 
     const {
         state:{DisplaySuccessModal},
         actions:{closeSuccessModal,closeCheckoutModal},
     } = useContext(GlobalStates);
-
-    const navigate = useNavigate();
 
     return(
         <Dialog
@@ -24,7 +21,11 @@ const SuccessModal = () => {
                         e.preventDefault();
                         closeSuccessModal();
                         closeCheckoutModal();
-                        navigate("/cart")
+                        if(change){
+                            setChange(false);
+                        } else{
+                            setChange(true)
+                        }
                     }}  
                     >
                         Close
