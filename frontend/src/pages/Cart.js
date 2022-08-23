@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import CartContainer from "../components/Cartpage/CartContainer";
-// import EmptyCartButton from "../components/Cartpage/EmptyCartButton";
 
 const Cart = () => {
     return(
@@ -11,7 +10,8 @@ const Cart = () => {
 };
 
 const Wrapper = styled.div`
-    background-color: #FAFAFA;
+    background-color: #DBE2EF;
+    height: 88vh;
 `
 
 export default Cart;

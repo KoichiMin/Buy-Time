@@ -37,9 +37,6 @@ const CheckOutButton = ({change,setChange}) => {
 }
 
 const StyledButton = styled.button`
-    position:relative;
-    top:5vh;
-    left:6vw;
     background-color: #fcb900;
     border-width: 0;
     border-radius: 2vw;

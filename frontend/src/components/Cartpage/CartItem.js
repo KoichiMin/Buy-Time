@@ -64,14 +64,15 @@ const CartItem = ({singleItem, setChange, change}) =>{
 const Container = styled.div`
     display: grid;
     align-items: center;
-    width: 54vw;
-    grid-template-columns: 27vw 6vw 5vw 7vw 6vw 5vw;
+    width: 68vw;
+    grid-template-columns: 37vw 7vw 7vw 7vw 7vw 7vw;
     margin-left: 0.4vw;
     margin-right: 1vw;
     margin-top: 0.3vh;
     margin-bottom: 0.3vh;
     padding-top: 1vh;
     padding-bottom: 1vh;
+    padding-left:0.4vw;
     color:white;
     background-color: rgb(255,255,255,0.5);
 `
@@ -87,6 +88,9 @@ const StyledButton = styled.button`
     margin:0.2vh;
     border: 0;
     background-color: transparent;
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 const StyledPlus = styled(AiFillPlusCircle)`
@@ -94,7 +98,7 @@ const StyledPlus = styled(AiFillPlusCircle)`
     height: 2vh;
     position:relative;
     left:-0.25vw;
-    top:-1.4vh;
+    top:-0.15vh;
 `
 
 const StyledMinus = styled(AiFillMinusCircle)`
@@ -102,7 +106,7 @@ const StyledMinus = styled(AiFillMinusCircle)`
     height: 2vh;
     position:relative;
     left:-0.25vw;
-    top:-1.4vh;
+    top:-0.15vh;
 `
 
 export default CartItem;

@@ -13,13 +13,9 @@ const EmptyCartButton = ({ handleClick }) => {
 }
 
 const StyledButton = styled.button`
-    position:relative;
-    top:5vh;
-    left:63vw;
     background-color: #fcb900;
     border-width: 0;
     border-radius: 2vw;
-    margin-left: 2vw;
     padding:1vh 2vw;
     color:white;
     font-weight: bold;
