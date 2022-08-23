@@ -23,10 +23,11 @@ export default AddToCart
 
 const StyledButton = styled.button`
 width: 5vw;
+height: 3vh;
 font-size: 15px;
 border:none;
 color: #F9F7F7;
-border-radius: 3px;
+border-radius: 5px;
 font-weight: 2px;
 background-color: #3F72AF;
 &:hover {
