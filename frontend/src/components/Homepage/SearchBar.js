@@ -21,6 +21,7 @@ const SearchBar = () => {
                 watchDataHasLoaded:true,
                 watchIds:data.ids,
                 watchNames:data.names,
+                categories:data.categories,
             }})
         })
         .catch((err) => console.log(err));

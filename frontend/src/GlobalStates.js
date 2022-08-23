@@ -8,6 +8,7 @@ const initialState = {
         watchDataHasLoaded:false,
         watchIds:undefined,
         watchNames:undefined,
+        categories:undefined,
     },
     DisplayCheckoutModal:false,
     DisplaySuccessModal:false,

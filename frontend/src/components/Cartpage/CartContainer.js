@@ -12,7 +12,6 @@ const CartContainer = () =>{
             fetch("/api/get-cart-items/58bf7fa8-2892-46dd-a0dc-0f95188acea1")
                 .then((res) => res.json())
                 .then((data) =>{
-                    console.log(data);
                     setCartData(data.data);
                     setLoad(true)
                 })
@@ -21,15 +20,21 @@ const CartContainer = () =>{
     return(
         <>
         <Wrapper>
+            <Header>
+                <div>Name</div>
+                <div>Category</div>
+                <div>Count</div>
+                <div>Individual Price</div>
+                <div>Total Price</div>
+            </Header>
             {
-        load && cartData &&
-                cartData.map((element) =>{
-                    return(
-                        <CartItem singleItem={element} change={change} setChange={setChange}/>
-                    )
-                })
+                load && cartData &&
+                    cartData.map((element) =>{
+                        return(
+                            <CartItem singleItem={element} change={change} setChange={setChange}/>
+                        )
+                    })
             }
-
         </Wrapper>
         <EmptyCartButton handleClick={(e) => {
             e.preventDefault();
@@ -55,10 +60,25 @@ const CartContainer = () =>{
     )
 }
 
-export default CartContainer
-
 const Wrapper = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: solid 1px;
+    width:56vw;
+    height: 65vh;
+    position:relative;
+    left: 22vw;
+    top:3vh;
+    overflow: scroll;
+    overflow-x: hidden;
 `
+
+const Header = styled.div`
+    display: grid;
+    grid-template-columns: 30vw 5vw 5vw 7vw 5vw 5vw;
+`
+
+export default CartContainer;
+
