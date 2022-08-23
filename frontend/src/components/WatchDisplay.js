@@ -32,7 +32,7 @@ const WatchDisplay = (pages) => {
     return(
         <Wrapper>
             <Navigator>
-                <LButton onClick={(e) => {
+                <LButton style={{color: "#3F72AF"}} onClick={(e) => {
                     e.preventDefault();
                     if(pageNumber > 1) {
                         setPageNumber(pageNumber - 1);
@@ -41,8 +41,8 @@ const WatchDisplay = (pages) => {
                 >
                     <StyledLeftIcon></StyledLeftIcon>
                 </LButton>
-                <PageNumber>{pageNumber}</PageNumber>
-                <RButton onClick={(e) => {
+                <PageNumber style={{color: "#112D4E"}}>{pageNumber}</PageNumber>
+                <RButton style={{color: "#3F72AF"}}  onClick={(e) => {
                     e.preventDefault();
                     if(pageNumber < maxPages) {
                         setPageNumber(pageNumber + 1);
@@ -66,9 +66,9 @@ const WatchDisplay = (pages) => {
 }
 
 const Wrapper = styled.div`
-    border-width: 2px;
-    border-color: black;
-    border-style: solid;
+    /* border-width: 2px; */
+    /* border-color: black; */
+    /* border-style: solid; */
     width:60vw;
     height: 80vh;
 `
@@ -87,6 +87,7 @@ const LButton = styled.button`
     background-color: transparent;
     &:hover{
         background-color:rgb(187,222,251,0.5);
+        /* border-radius: 5px; */
         cursor: pointer;
     }
 `
@@ -119,7 +120,8 @@ const PageNumber = styled.h3`
 
 const WatchGrid = styled.div`
     display: grid;
-    grid-template-columns: 18vw 18vw 18vw;
+    grid-template-columns: repeat(3, 1fr);
+    /* border: 3px solid black; */
     grid-template-rows: 35vh 35vh 35vh;
 `
 
