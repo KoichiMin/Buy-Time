@@ -31,9 +31,6 @@ const StyledSidebar = styled.div`
     padding: 10vh 2vw 0 4vw;
     height: 100%;
     position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
     overflow-x: hidden;
 `;
 
