@@ -4,7 +4,7 @@ import { GlobalStates } from "../../GlobalStates";
 import { Dialog } from "@mui/material";
 import {useNavigate} from "react-router-dom";
 
-const ErrorModal = ({change,setChange}) => {
+const ErrorModal = () => {
 
     const navigate = useNavigate();
 
@@ -35,11 +35,7 @@ const ErrorModal = ({change,setChange}) => {
                     <CloseButton onClick={(e) => {
                         e.preventDefault();
                         closeErrorModal();
-                        if(change){
-                            setChange(false);
-                        } else{
-                            setChange(true)
-                        }
+                        navigate("/cart")
                     }}  
                     >
                         Close

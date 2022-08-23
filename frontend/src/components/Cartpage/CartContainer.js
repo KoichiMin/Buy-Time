@@ -3,7 +3,6 @@ import { useState } from "react"
 import CartItem from "./CartItem"
 import styled from "styled-components"
 import EmptyCartButton from "./EmptyCartButton"
-import CheckOutButton from "./CheckOutButton"
 
 const CartContainer = () =>{
         const [cartData, setCartData] = useState(null)
@@ -19,13 +18,13 @@ const CartContainer = () =>{
                 .catch((err) => console.log(err)); 
         }, [change])
     return(
-        <MainWrapper>
+        <>
         <Wrapper>
             <Header>
                 <div>Name</div>
                 <div>Category</div>
                 <div>Count</div>
-                <div>Price/item</div>
+                <div>Individual Price</div>
                 <div>Total Price</div>
             </Header>
             {
@@ -57,14 +56,9 @@ const CartContainer = () =>{
             }
             })
             }}/>
-            <CheckOutButton change={change} setChange={setChange}></CheckOutButton>
-        </MainWrapper>
+        </>
     )
 }
-
-const MainWrapper = styled.div`
-    z-index: 10;
-`
 
 const Wrapper = styled.div`
     display: flex;
@@ -79,18 +73,13 @@ const Wrapper = styled.div`
     top:3vh;
     overflow: scroll;
     overflow-x: hidden;
-    background-color: #003660;
-    font-family: var(--font-family);
 `
 
 const Header = styled.div`
     display: grid;
-    grid-template-columns: 27vw 6vw 5vw 7vw 6vw 5vw;
+    grid-template-columns: 28vw 5vw 5vw 7vw 5vw 5vw;
     margin-left: 0.4vw;
     margin-top: 1vh;
-    margin-bottom: 1vh;
-    font-weight: bold;
-    color:white;
 `
 
 export default CartContainer;

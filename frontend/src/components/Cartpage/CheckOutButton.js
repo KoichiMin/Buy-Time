@@ -6,17 +6,19 @@ import SuccessModal from "./SuccessModal";
 import ErrorModal from "./ErrorModal";
 
 
-const CheckOutButton = ({change,setChange}) => {
+const CheckOutButton = () => {
 
     const { 
         actions:{openCheckoutModal, updateGrandTotal},
     } = useContext(GlobalStates);
-
+    
+    // useEffect(() => {
+    // }, []);
     return(
         <>
         <CheckoutModal></CheckoutModal>
-        <SuccessModal change={change} setChange={setChange}></SuccessModal>
-        <ErrorModal change={change} setChange={setChange}></ErrorModal>
+        <SuccessModal></SuccessModal>
+        <ErrorModal></ErrorModal>
         <StyledButton onClick={(e) => {
             e.preventDefault();
             openCheckoutModal();
@@ -39,7 +41,7 @@ const CheckOutButton = ({change,setChange}) => {
 const StyledButton = styled.button`
     position:relative;
     top:5vh;
-    left:6vw;
+    left:19vw;
     background-color: #fcb900;
     border-width: 0;
     border-radius: 2vw;

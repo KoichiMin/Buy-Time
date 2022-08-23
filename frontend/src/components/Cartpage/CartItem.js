@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import {AiFillPlusCircle} from "react-icons/ai";
-import {AiFillMinusCircle} from "react-icons/ai";
+import {FcPlus} from "react-icons/fc";
 
 const CartItem = ({singleItem, setChange, change}) =>{
 
@@ -44,18 +43,18 @@ const CartItem = ({singleItem, setChange, change}) =>{
 
     return(
         <Container>
+            <ElementContainer>
                 <div>{singleItem.name}</div>
+            </ElementContainer>
                 <div>{singleItem.category}</div>
                 <div>{singleItem.count}</div>
                 <div>{`${singleItem.price} `}</div>
                 <div>{`$${(parsedSingleItemPrice * singleItem.count).toFixed(2)}`}</div>
             <ButtonContainer>
                 <StyledButton onClick={() => handleMinus(singleItem._id)}>
-                    <StyledMinus></StyledMinus>
-                </StyledButton>
-                <StyledButton onClick={() => handlePlus(singleItem)}>
                     <StyledPlus></StyledPlus>
                 </StyledButton>
+                <StyledButton onClick={() => handlePlus(singleItem)}></StyledButton>
             </ButtonContainer>
         </Container>
     )
@@ -65,15 +64,9 @@ const Container = styled.div`
     display: grid;
     align-items: center;
     width: 54vw;
-    grid-template-columns: 27vw 6vw 5vw 7vw 6vw 5vw;
+    grid-template-columns: 28vw 5vw 5vw 7vw 5vw 5vw;
     margin-left: 0.4vw;
     margin-right: 1vw;
-    margin-top: 0.3vh;
-    margin-bottom: 0.3vh;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-    color:white;
-    background-color: rgb(255,255,255,0.5);
 `
 
 const ButtonContainer = styled.div`
@@ -81,28 +74,22 @@ const ButtonContainer = styled.div`
     flex-direction: row;
 `
 
+const ElementContainer = styled.div`
+    
+`
+
 const StyledButton = styled.button`
     width:1vw;
     height:2vh;
     margin:0.2vh;
-    border: 0;
-    background-color: transparent;
 `
 
-const StyledPlus = styled(AiFillPlusCircle)`
+const StyledPlus = styled(FcPlus)`
     width:1vw;
     height: 2vh;
     position:relative;
-    left:-0.25vw;
-    top:-1.4vh;
-`
-
-const StyledMinus = styled(AiFillMinusCircle)`
-    width:1vw;
-    height: 2vh;
-    position:relative;
-    left:-0.25vw;
-    top:-1.4vh;
+    left:-0.35vw;
+    top:-1.65vh;
 `
 
 export default CartItem;
