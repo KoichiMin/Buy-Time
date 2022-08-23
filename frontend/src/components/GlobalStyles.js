@@ -30,6 +30,7 @@ export default createGlobalStyle`
       box-sizing: border-box;
       font-size: 100%;
       vertical-align: baseline;
+      font-family: var(--font-family);
   }
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure,
@@ -51,13 +52,10 @@ export default createGlobalStyle`
       content: none;
   }
 
-  h1,
-  h2,
-  h3,
-  label,
   button {
     font-family: var(--font-family);
-    font-size: 24px;
+    background-color: var(--background-color-button);
+    color: var(--color-font);
     text-align: center;
   }
 
