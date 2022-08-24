@@ -50,7 +50,7 @@ const StyledDiv = styled.div`
             justify-content: center;
             width: 10vw;
             text-align: center;
-            opacity: 0.3;
+            opacity: 0.5;
             /* font-weight: b; */
         }
         .price{

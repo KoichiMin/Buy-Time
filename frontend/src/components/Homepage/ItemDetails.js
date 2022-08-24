@@ -41,9 +41,10 @@ const ItemDetails = () => {
         object &&
         companies &&
         <MainDiv>
-            <img src={object.imageSrc} atl="watch"/>
-            <p>{object.name}</p>
-            <p>{object.price}</p>
+            <img className="img" src={object.imageSrc} atl="watch"/>
+            <div className="contentdiv">
+            <p className="name">{object.name}</p>
+            <p className="price">{object.price}</p>
 
             {/* mapping over companies array to match its id with the item's company id */}
             {/* when a match occurs, a link to the brand's webpage is created */}
@@ -52,7 +53,7 @@ const ItemDetails = () => {
                 return( 
                     item._id === object.companyId &&
                     <>
-                    <p>Brand: <a href={item.url}>{item.name}</a></p>
+                    <p className="brand"><a className="link" href={item.url}>{item.name}</a></p>
                     </>
                 )
 
@@ -60,18 +61,61 @@ const ItemDetails = () => {
 
             {/* conditional rendering depending on if an item is in stock or not */}
             {object.numInStock > 0 ?
-            <>
+            <BtnDiv>
             <BuyNowModal object={object}/> 
             <AddToCart object={object} />
-            </>
+            </BtnDiv>
             :
             <button disabled={true}>Out of Stock</button>
             }
+            </div>
         </MainDiv>
     );
 };
 
 const MainDiv = styled.div`
-    margin-left: 20vw;
+    margin-left: 8vw;
+    margin-top: 10vh;
+
+    .img{
+        width: 300px;
+        margin-left: 38vw;
+    }
+    
+    .contentdiv{
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .name{
+        margin-top: 20px;
+        text-align: center;
+        opacity: 0.5;
+        font-size: 19px;
+    }
+
+    .price{
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    .brand{
+        margin-top: 10px;
+        font-size: 17px;
+        margin-bottom: 20px;
+    }
+
+    .link{
+        text-decoration: none;
+        color: #3F72AF;
+    }
+`
+
+const BtnDiv = styled.div`
+    display: flex;
+    gap: 8px;
 `
 export default ItemDetails;
