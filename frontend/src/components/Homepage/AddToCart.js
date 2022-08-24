@@ -15,14 +15,16 @@ const AddToCart = ({object}) =>{
         })                            
 }
     return(
-        <StyledButton onClick={() => handleCart(object)} >add to cart</StyledButton>
+        <StyledButton onClick={() => handleCart(object)} >Add to Cart</StyledButton>
     )
 }
 
 export default AddToCart
 
 const StyledButton = styled.button`
-width: 5vw;
+width: auto;
+padding-left: 0.5vw;
+padding-right: 0.5vw;
 height: 3vh;
 font-size: 15px;
 border:none;

@@ -47,7 +47,7 @@ const BuyNowModal = ({ object }) => {
 
     return(
         <>
-            <StyledButton onClick={openModal}>buy now</StyledButton>
+            <StyledButton onClick={openModal}>Buy now</StyledButton>
             <Modal 
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
@@ -210,7 +210,7 @@ const ConfirmedDiv = styled.div`
 `
 
 const StyledButton = styled.button`
-width: 5vw;
+width: 6vw;
 height: 3vh;
 font-size: 15px;
 border:none;

@@ -10,7 +10,7 @@ const Cart = () => {
 };
 
 const Wrapper = styled.div`
-    background-color: #DBE2EF;
+    background-color: #F9F7F7;
     height: 88vh;
 `
 

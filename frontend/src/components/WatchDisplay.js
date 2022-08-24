@@ -122,7 +122,10 @@ const WatchGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     /* border: 3px solid black; */
-    grid-template-rows: 35vh 35vh 35vh;
+    grid-template-rows: auto auto auto;
+    grid-gap: 3vh;
+    padding:1vw;
+    background-color: white;
 `
 
 

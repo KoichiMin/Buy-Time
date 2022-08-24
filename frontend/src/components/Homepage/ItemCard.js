@@ -8,7 +8,7 @@ const ItemCard = ({object}) => {
         <>
                 <StyledDiv>
                 <Link to={`/item-details/${object._id}`} className="link" >
-                    <img src={object.imageSrc} alt="the watches in the top sellers"/>
+                    <StyledImg src={object.imageSrc} alt="the watches in the top sellers"/>
                     <div className="name">{object.name}</div>
                     <div className="price">{object.price}</div>
                 </Link>
@@ -26,9 +26,15 @@ const ItemCard = ({object}) => {
     )
 }
 
-export default ItemCard;
+
 
 const StyledDiv = styled.div`
+    padding-bottom:2vh;
+    margin-left: 0.2vw;
+    margin-right: 0.2vw;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,3 +84,10 @@ const StyledDiv = styled.div`
         /* align-items: flex-end; */
     }
 `
+
+const StyledImg = styled.img`
+    width: 10vw;
+    height: 22vh;
+`
+
+export default ItemCard;
