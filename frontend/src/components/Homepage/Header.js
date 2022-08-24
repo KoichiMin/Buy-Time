@@ -1,4 +1,3 @@
-// import { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import {MdOutlineShoppingCart} from "react-icons/md";
@@ -42,8 +41,6 @@ padding-bottom: 1.5vh;
     }
 }
 
-
-
 .cart{
     height: 40px;
     width: 40px;
@@ -55,11 +52,7 @@ padding-bottom: 1.5vh;
     }
 }
 `
-
 const Container = styled.div`
-/* display: flex;
-flex-direction: row;
-gap: 2vw; */
 
 button {
     font-size: 20px;

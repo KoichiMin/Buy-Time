@@ -15,6 +15,7 @@ const SearchBar = () => {
     } = useContext(GlobalStates);
 
     useEffect(() => {
+        //getting ids and categories and names
         fetch(`/api/getWatchesNames`)
         .then(res => res.json())
         .then((data) => {
@@ -33,6 +34,7 @@ const SearchBar = () => {
     let filteredNames = [];
     let filteredIds = [];
 
+    //matching what you type to the database and pushing valid results into filtered names and filtered ids
     if(WatchDataGlobal.watchNames !== undefined) {
         WatchDataGlobal.watchNames.forEach((name,index) => {
             if(name.toLowerCase().replace(/\s+/g, "").match(SearchBarInput.replace(/\s+/g, "").toLowerCase())) {

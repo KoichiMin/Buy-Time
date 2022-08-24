@@ -2,12 +2,9 @@ import { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import WatchDisplay from "../WatchDisplay";
 import { GlobalStates } from "../../GlobalStates";
-import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 
 const CategoryManager = () => {
-
-    let navigate = useNavigate();
 
     const {
         state:{category,WatchDataGlobal},
@@ -16,6 +13,7 @@ const CategoryManager = () => {
     const [load, setLoad] = useState(false);
 
     useEffect(() => {
+        //gets a category and then sends 6 items to watch display
         if(WatchDataGlobal.watchDataHasLoaded) {
             fetch(`/api/getWatchesByCategory/6/${category}`)
             .then((res) => res.json())
