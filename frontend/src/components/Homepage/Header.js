@@ -28,12 +28,14 @@ display: flex;
 flex-direction: row;
 justify-content: space-around;
 align-items: center;
+padding-bottom: 1.5vh;
 
 .link{
     text-decoration: none;
     color: #3F72AF;
     font-size: 30px;
     font-weight: bolder;
+    margin-top: 1.5vh;
 
     &:active{
         transform: translateY(0.5px);
@@ -46,6 +48,7 @@ align-items: center;
     height: 40px;
     width: 40px;
     color: #3F72AF;
+    margin-top: 1.5vh;
 
     &:active{
         transform: translateY(0.5px);
