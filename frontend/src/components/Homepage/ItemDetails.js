@@ -6,6 +6,7 @@ import BuyNowModal from "./BuyNowModal";
 import AddToCart from "./AddToCart";
 import {GlobalStates} from "../../GlobalStates";
 import { useContext } from "react";
+import {CircularProgress} from "@mui/material";
 
 const ItemDetails = () => {
     const {itemId} = useParams()
@@ -39,7 +40,7 @@ const ItemDetails = () => {
 
     return (
         object &&
-        companies &&
+        companies ?
         <MainDiv>
             <img className="img" src={object.imageSrc} atl="watch"/>
             <div className="contentdiv">
@@ -70,6 +71,12 @@ const ItemDetails = () => {
             }
             </div>
         </MainDiv>
+        :
+        (
+        <Container>
+            <StyledCircularProgress></StyledCircularProgress>  
+        </Container>
+        )
     );
 };
 
@@ -118,4 +125,17 @@ const BtnDiv = styled.div`
     display: flex;
     gap: 8px;
 `
+
+const StyledCircularProgress = styled(CircularProgress)`
+
+`
+
+const Container = styled.div`
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
 export default ItemDetails;
