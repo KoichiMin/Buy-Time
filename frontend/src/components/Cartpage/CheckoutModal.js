@@ -7,7 +7,7 @@ const CheckoutModal = () => {
 
     const {
         state:{DisplayCheckoutModal,grandTotal},
-        actions:{openSuccessModal,closeCheckoutModal,openErrorModal,updateGrandTotal},
+        actions:{openSuccessModal,closeCheckoutModal,openErrorModal},
     } = useContext(GlobalStates);
 
 
@@ -44,6 +44,7 @@ const CheckoutModal = () => {
                     <ButtonContainer>
                         <StyledCheckoutButton onClick={(e) => {
                             e.preventDefault();
+                            //removes all items from cart and updates the items database 
                             fetch("/api/checkout", {
                                 method: 'PATCH',
                             headers: {

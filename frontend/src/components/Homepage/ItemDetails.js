@@ -1,4 +1,3 @@
-import { GlobalStyleComponent } from "styled-components";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -14,11 +13,10 @@ const ItemDetails = () => {
     const [companies, setCompanies] = useState(null);
 
     const {
-        state:{WatchDataGlobal,SideBarFetchHasLoaded}
+        state:{WatchDataGlobal}
     } = useContext(GlobalStates);
 
     // fetching to get individual items based off id
-    //ERROR for this useEffect - sidebar and searchbar not working
 
     useEffect(() => {
         if(WatchDataGlobal.watchDataHasLoaded) {

@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { GlobalStates } from "../../GlobalStates";
 import { Link } from "react-router-dom";
@@ -11,9 +11,9 @@ const Sidebar = (props) => {
 
     return(
         <StyledSidebar>
+            {/* mapping through categories and updating the links with the appropriate category*/}
             {WatchDataGlobal.watchDataHasLoaded && WatchDataGlobal.categories !== undefined &&
             WatchDataGlobal.categories.map((category) => {
-                {/* console.log(category); */}
                 return(
                     <StyledLink to={"/"} onClick={(e) => {updateCategory({data:category})}}>{category}</StyledLink>
                 )}

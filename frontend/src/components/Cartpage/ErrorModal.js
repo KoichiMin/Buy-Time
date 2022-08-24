@@ -2,19 +2,16 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { GlobalStates } from "../../GlobalStates";
 import { Dialog } from "@mui/material";
-import {useNavigate} from "react-router-dom";
 
 const ErrorModal = ({change,setChange}) => {
-
-    const navigate = useNavigate();
 
     const {
         state:{DisplayErrorModal,ErrorModalData},
         actions:{closeErrorModal},
     } = useContext(GlobalStates);
 
-    console.log(ErrorModalData);
-
+    //creates error strings
+    //if database has error string, it will print out
     let errorString = "";
     if(ErrorModalData !== null) {
         ErrorModalData.map((name) => {

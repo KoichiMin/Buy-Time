@@ -11,22 +11,22 @@ const CartItem = ({singleItem, setChange, change}) =>{
     } = useContext(GlobalStates)
 
     const handleMinus = (itemId) =>{
+        //deletes a specific cart item
         fetch(`/api/delete-cart-item/${"58bf7fa8-2892-46dd-a0dc-0f95188acea1"}/${itemId}`, {
             method: "DELETE"
         })
         .then((res) => res.json())
         .then((data) =>{
-            console.log(data)
-            console.log("item in cart was discarded")
             if(change){
                 setChange(false);
             } else{
-                setChange(true)
+                setChange(true);
             }
         })
     }
 
     const handlePlus = (singleItem) =>{
+        //adds a specific cart item
         fetch("/api/add-cart-item", {
             method: 'POST',
             headers:{
@@ -38,9 +38,7 @@ const CartItem = ({singleItem, setChange, change}) =>{
         .then((data) =>{
             if(data.message === "Cannot add more of this item to cart, out of stock") {
                 openErrorModal({data:[singleItem.name]})
-            }
-            console.log(data)
-            console.log("it worked! Adding item to the cart")                    
+            }                  
             if(change){
                 setChange(false);
             } else{

@@ -5,6 +5,8 @@ import { useContext } from "react";
 
 const SuggestionItem = ({watchName,userInput,id}) => {
 
+    //to render suggested items
+    
     const {
         actions:{updateSearchBarValue},
     } = useContext(GlobalStates);

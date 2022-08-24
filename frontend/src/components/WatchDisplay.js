@@ -11,12 +11,14 @@ const WatchDisplay = (pages) => {
     const {state: {category}} = useContext(GlobalStates);
 
     const watches = [];
-    let maxPages = 0;
+    let maxPages = 0; 
 
+    //setting the page number back to 1 when switching categories 
     useEffect(() => {
         setPageNumber(1)
     }, [category])
 
+    //pages.pages is deconstructing the data in the database
     if(pages.pages !== undefined) {
         pages.pages.forEach((pageObj) => {
             if(pageObj.pageNumber === pageNumber) {
@@ -24,7 +26,7 @@ const WatchDisplay = (pages) => {
                     watches.push(watch);
                 }) 
             }
-            maxPages++;
+            maxPages++; //do not want user to go beyond number of pages available
         })
     }
 
@@ -66,9 +68,6 @@ const WatchDisplay = (pages) => {
 }
 
 const Wrapper = styled.div`
-    /* border-width: 2px; */
-    /* border-color: black; */
-    /* border-style: solid; */
     width:60vw;
     height: 80vh;
 `
@@ -87,7 +86,6 @@ const LButton = styled.button`
     background-color: transparent;
     &:hover{
         background-color:rgb(187,222,251,0.5);
-        /* border-radius: 5px; */
         cursor: pointer;
     }
 `
@@ -121,12 +119,9 @@ const PageNumber = styled.h3`
 const WatchGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* border: 3px solid black; */
     grid-template-rows: auto auto auto;
     grid-gap: 3vh;
     padding:1vw;
     background-color: white;
 `
-
-
 export default WatchDisplay;

@@ -26,8 +26,6 @@ const ItemCard = ({object}) => {
     )
 }
 
-
-
 const StyledDiv = styled.div`
     padding-bottom:2vh;
     margin-left: 0.2vw;
@@ -40,7 +38,6 @@ const StyledDiv = styled.div`
     align-items: center;
     justify-content: center;
     gap: 8px;
-    /* border: 3px solid black; */
     height: 100%;
     .link{
         text-decoration: none;
@@ -48,7 +45,6 @@ const StyledDiv = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* height: 25vh; */
         
         .name{
             display: flex;
@@ -57,10 +53,8 @@ const StyledDiv = styled.div`
             width: 10vw;
             text-align: center;
             opacity: 0.5;
-            /* font-weight: b; */
         }
         .price{
-            /* font-weight: bold; */
             font-size: 14px;
             color: #112D4E;
         }
@@ -70,8 +64,6 @@ const StyledDiv = styled.div`
         display:flex;
         flex-direction: row ;
         align-items: center;
-        /* justify-content: flex-end; */
-        
     }
     .button{
         width: 6vw;
@@ -81,7 +73,6 @@ const StyledDiv = styled.div`
         border-radius: 3px;
         opacity: 0.5;
         background-color: #3F72AF;
-        /* align-items: flex-end; */
     }
 `
 

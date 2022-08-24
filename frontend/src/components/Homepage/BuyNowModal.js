@@ -29,8 +29,8 @@ const BuyNowModal = ({ object }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const _id = object._id
-        console.log(_id)
 
+        //removes one item in stock on click of buy now button
         fetch(`/api/updatestock/${object._id}`, {
             method: "PATCH",
             headers: {
@@ -40,7 +40,6 @@ const BuyNowModal = ({ object }) => {
         })
         .then((res) => res.json())
         .then((json) => {
-            console.log(json)
             setConfirmed(true)
         })
     }
