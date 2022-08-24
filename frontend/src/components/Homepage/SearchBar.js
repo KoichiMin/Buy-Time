@@ -56,7 +56,7 @@ const SearchBar = () => {
             {WatchDataGlobal.watchDataHasLoaded && (
                 <input id={"smartSearch"}
                 type="text"
-                defaultValue={"What are you looking for?"}
+                placeholder={"What are you looking for?"}
                 onChange = {(e) => {
                     updateSearchBarValue({data:e.target.value});
                 }}
@@ -98,12 +98,16 @@ const SearchBar = () => {
 const Wrapper = styled.div`
     input {
         width: 30vw;
-        height: 5vh;
+        height: 2.5vh;
         border-radius: 5px;
         border: solid #cdcdcd 3px;
         padding: 10px;
         font-size: 20px;
         margin:1vw;
+
+        &:focus{
+            outline: none;
+        }
     }
     z-index: 1;
 `

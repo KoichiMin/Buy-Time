@@ -2,22 +2,19 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import {MdOutlineShoppingCart} from "react-icons/md";
-
 import SearchBar from "./SearchBar";
 
 const Header = () => {
     return(
         <Wrapper>
-            <Link to="/">
+            <Link to="/" className="link">
                 <p>BUY TIME</p>
             </Link>
             <Container>
                 <SearchBar />
-                <button>Search</button>
             </Container>
             <Link to="/cart">
-                <MdOutlineShoppingCart>
-                </MdOutlineShoppingCart>
+                <MdOutlineShoppingCart className="cart"/>
             </Link>
         </Wrapper>
     );
@@ -29,19 +26,37 @@ const Wrapper = styled.div`
 width: 100%;
 display: flex;
 flex-direction: row;
-justify-content: space-between;
+justify-content: space-around;
 align-items: center;
 
-p {
-    color: #3217d5;
-    font-display: none;
+.link{
+    text-decoration: none;
+    color: #3F72AF;
+    font-size: 30px;
+    font-weight: bolder;
+
+    &:active{
+        transform: translateY(0.5px);
+    }
+}
+
+
+
+.cart{
+    height: 40px;
+    width: 40px;
+    color: #3F72AF;
+
+    &:active{
+        transform: translateY(0.5px);
+    }
 }
 `
 
 const Container = styled.div`
-display: flex;
+/* display: flex;
 flex-direction: row;
-gap: 2vw;
+gap: 2vw; */
 
 button {
     font-size: 20px;
