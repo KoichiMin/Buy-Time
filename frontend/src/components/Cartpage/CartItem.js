@@ -1,8 +1,14 @@
 import styled from "styled-components";
 import {AiFillPlusCircle} from "react-icons/ai";
 import {AiFillMinusCircle} from "react-icons/ai";
+import {GlobalStates} from "../../GlobalStates";
+import { useContext } from "react";
 
 const CartItem = ({singleItem, setChange, change}) =>{
+
+    const {
+        actions:{openErrorModal},
+    } = useContext(GlobalStates)
 
     const handleMinus = (itemId) =>{
         fetch(`/api/delete-cart-item/${"58bf7fa8-2892-46dd-a0dc-0f95188acea1"}/${itemId}`, {
@@ -30,6 +36,9 @@ const CartItem = ({singleItem, setChange, change}) =>{
         })
         .then((res) => res.json())
         .then((data) =>{
+            if(data.message === "Cannot add more of this item to cart, out of stock") {
+                openErrorModal({data:[singleItem.name]})
+            }
             console.log(data)
             console.log("it worked! Adding item to the cart")                    
             if(change){
@@ -37,7 +46,10 @@ const CartItem = ({singleItem, setChange, change}) =>{
             } else{
                 setChange(true)
             }
-        }) 
+        })
+        .catch((err) => {
+            console.log(err);
+        }); 
     }
 
     const parsedSingleItemPrice = parseFloat(singleItem.price.slice(1,singleItem.price.length));
@@ -64,14 +76,15 @@ const CartItem = ({singleItem, setChange, change}) =>{
 const Container = styled.div`
     display: grid;
     align-items: center;
-    width: 54vw;
-    grid-template-columns: 27vw 6vw 5vw 7vw 6vw 5vw;
+    width: 68vw;
+    grid-template-columns: 37vw 7vw 7vw 7vw 7vw 7vw;
     margin-left: 0.4vw;
     margin-right: 1vw;
     margin-top: 0.3vh;
     margin-bottom: 0.3vh;
     padding-top: 1vh;
     padding-bottom: 1vh;
+    padding-left:0.4vw;
     color:white;
     background-color: rgb(255,255,255,0.5);
 `
@@ -87,6 +100,9 @@ const StyledButton = styled.button`
     margin:0.2vh;
     border: 0;
     background-color: transparent;
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 const StyledPlus = styled(AiFillPlusCircle)`
@@ -94,7 +110,7 @@ const StyledPlus = styled(AiFillPlusCircle)`
     height: 2vh;
     position:relative;
     left:-0.25vw;
-    top:-1.4vh;
+    top:-0.15vh;
 `
 
 const StyledMinus = styled(AiFillMinusCircle)`
@@ -102,7 +118,7 @@ const StyledMinus = styled(AiFillMinusCircle)`
     height: 2vh;
     position:relative;
     left:-0.25vw;
-    top:-1.4vh;
+    top:-0.15vh;
 `
 
 export default CartItem;

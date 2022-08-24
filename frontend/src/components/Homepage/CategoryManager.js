@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-
+import styled from "styled-components";
 import WatchDisplay from "../WatchDisplay";
 import { GlobalStates } from "../../GlobalStates";
 import { useNavigate } from "react-router-dom";
@@ -35,11 +35,17 @@ const CategoryManager = () => {
         )
     } else {
         return(
-            <CircularProgress/>
+            <StyledCircularProgress/>
         )
     }
 
     
 };
+
+const StyledCircularProgress = styled(CircularProgress)`
+    position: absolute;
+    top:50vh;
+    left: 50vw;
+`
 
 export default CategoryManager;
