@@ -25,20 +25,20 @@ const CheckoutModal = () => {
                     </InputContainer>
                     <InputContainer>
                         <StyledLabel>Card Holder Name</StyledLabel>
-                        <StyledInput defaultValue={"Card Holder Name"}></StyledInput>
+                        <StyledInput placeholder={"Card Holder Name"}></StyledInput>
                     </InputContainer>
                     <InputContainer>
                         <StyledLabel>Card Number</StyledLabel>
-                        <StyledInput defaultValue={"Card Number"}></StyledInput>
+                        <StyledInput placeholder={"Card Number"}></StyledInput>
                     </InputContainer>
                     <InputContainer2>
                         <InputContainer>
                             <StyledLabel>Expiry Date</StyledLabel>
-                            <StyledInput1 defaultValue={"Expiry Date"}></StyledInput1>
+                            <StyledInput1 placeholder={"Expiry Date"}></StyledInput1>
                         </InputContainer>
                         <InputContainer>
                             <StyledLabel>CVV Code</StyledLabel>
-                            <StyledInput1 defaultValue={"CVV"}></StyledInput1>
+                            <StyledInput1 placeholder={"CVV"}></StyledInput1>
                         </InputContainer>
                     </InputContainer2>
                     <ButtonContainer>

@@ -51,6 +51,7 @@ const SearchBar = () => {
             type="text"
             defaultValue={"What are you looking for?"}
             />
+            <StyledSearchIcon></StyledSearchIcon>
             </Wrapper>
         )
     } else {
@@ -118,6 +119,7 @@ const Wrapper = styled.div`
 `
 
 const StyledContainer = styled.div`
+    z-index: 3;
     position:absolute;
     margin-top: 1vh;
     border-color: white;

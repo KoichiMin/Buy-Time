@@ -67,7 +67,7 @@ const CartContainer = () =>{
 }
 
 const MainWrapper = styled.div`
-    z-index: 10;
+    /* z-index: 10; */
     display: flex;
     flex-direction: column;
     position: relative;
@@ -87,11 +87,11 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    border: solid 1px;
+    /* border: solid 1px; */
     width:70vw;
     height: 65vh;
     margin-top: 8vh;
-    overflow: scroll;
+    /* overflow: scroll; */
     overflow-x: hidden;
     background-color: #112D4E;
     font-family: var(--font-family);
