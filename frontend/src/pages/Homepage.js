@@ -13,5 +13,4 @@ export default Homepage;
 
 const Wrapper = styled.div`
 margin-left: 20vw;
-overflow: hidden;
 `
