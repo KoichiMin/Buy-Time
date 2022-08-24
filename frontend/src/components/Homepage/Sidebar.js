@@ -43,6 +43,7 @@ const StyledLink = styled(Link)`
     font-size: 20px;
     border: none;
     text-decoration: none;
+    color:#3F72AF;
     
 &:hover {
     color: var(--color-light-blue);
