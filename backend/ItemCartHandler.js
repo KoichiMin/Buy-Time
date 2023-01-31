@@ -88,17 +88,24 @@ const addItemCart = async(req, res) => {
     if (item.count === undefined || item.count === null) {
         item = {count:1,...req.body.item};
     }
-
+    // console.log(item)
     try {
         await client.connect();
         const query = {_id:cartId};
         const db = client.db("Carts");
         const serverData = await db.collection("CartsData").findOne(query);
+        // console.log("this is ", serverData.items)
         if (serverData === null) {
             throw new Error(`The cart with id ${cartId} does not exist`);
         }
-        const itemInCart = serverData.items.find((cartItem) => cartItem._id === item._id);
-        if(itemInCart !== undefined) {
+        
+        const itemInCart = serverData.items.find((cartItem) => {
+            // console.log(cartItem)
+            return cartItem._id === item._id
+        });
+        // const itemInCart = undefined
+        // console.log(itemInCart)
+        if(itemInCart !== undefined ) {
             //Begin count update process if the item is already in the cart
             const cart = await db.collection("CartsData").findOne(query);
             let count = 0;

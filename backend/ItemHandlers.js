@@ -101,8 +101,9 @@ const getNumWatchesByCategory = async (req,res) => {
             });
             pageNum++;
         }
-
+        console.log(pages)
         client.close()
+
         res.status(200).json({status: "success", pages})
     }
     catch(err){

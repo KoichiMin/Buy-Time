@@ -26,6 +26,16 @@ const batchImportCompanies = async () => {
     client.close();
 }
 
-batchImportItems();
+const insertCartId = async () =>{
+    const client = new MongoClient(MONGO_URI, options);
+    await client.connect();
+    const db = client.db("Carts");
+    await db.collection("CartsData").insertOne({_id:"58bf7fa8-2892-46dd-a0dc-0f95188acea1"});
+    client.close();
+}
+
+
+// batchImportItems();
 // batchImportCompanies();
+insertCartId()
 
