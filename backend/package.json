@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev:backend": "nodemon server.js"
+    "dev:backend": "nodemon server.js",
+    "build": "yarn install"
   },
   "keywords": [],
   "author": "",
