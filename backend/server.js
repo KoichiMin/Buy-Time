@@ -1,8 +1,9 @@
-'use strict';
+// 'use strict';
 
 // const { application } = require('express');
 const express = require('express');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 
 const {
   getAllItems,
@@ -34,7 +35,7 @@ const {
   getCompany,
 } = require("./CompanyHandler.js")
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const app = express();
 
 app.use(function(req, res, next) {
@@ -52,8 +53,8 @@ app.use(function(req, res, next) {
   app.use(express.static('./server/assets'));
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
-  app.use('/', express.static(__dirname + '/'));
-
+  // app.use('/', express.static(__dirname + '/'));
+  app.use(bodyParser.json());
   //*****************************
   // Endpoints for CART/PURCHASES
   //*****************************
