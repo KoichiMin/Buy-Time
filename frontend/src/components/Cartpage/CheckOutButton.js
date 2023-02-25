@@ -21,7 +21,7 @@ const CheckOutButton = ({change,setChange}) => {
             e.preventDefault();
             openCheckoutModal();
             //getting total for entire cart
-            fetch("/api/get-total/58bf7fa8-2892-46dd-a0dc-0f95188acea1")
+            fetch("https://buy-time.onrender.com/api/get-total/58bf7fa8-2892-46dd-a0dc-0f95188acea1")
             .then(res => res.json())
             .then((data) => {
                 updateGrandTotal({data:data.totalCost});

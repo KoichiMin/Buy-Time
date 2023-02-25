@@ -45,7 +45,7 @@ const CheckoutModal = () => {
                         <StyledCheckoutButton onClick={(e) => {
                             e.preventDefault();
                             //removes all items from cart and updates the items database 
-                            fetch("/api/checkout", {
+                            fetch("https://buy-time.onrender.com/api/checkout", {
                                 method: 'PATCH',
                             headers: {
                                 'Content-Type': 'application/json',

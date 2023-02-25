@@ -15,7 +15,7 @@ const CategoryManager = () => {
     useEffect(() => {
         //gets a category and then sends 6 items to watch display
         if(WatchDataGlobal.watchDataHasLoaded) {
-            fetch(`/api/getWatchesByCategory/6/${category}`)
+            fetch(`api/getWatchesByCategory/6/${category}`)
             .then((res) => res.json())
             .then((data) => {
                 setPages(data);

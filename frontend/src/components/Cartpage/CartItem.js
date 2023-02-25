@@ -12,7 +12,7 @@ const CartItem = ({singleItem, setChange, change}) =>{
 
     const handleMinus = (itemId) =>{
         //deletes a specific cart item
-        fetch(`/api/delete-cart-item/${"58bf7fa8-2892-46dd-a0dc-0f95188acea1"}/${itemId}`, {
+        fetch(`https://buy-time.onrender.com/api/delete-cart-item/${"58bf7fa8-2892-46dd-a0dc-0f95188acea1"}/${itemId}`, {
             method: "DELETE"
         })
         .then((res) => res.json())
@@ -27,7 +27,7 @@ const CartItem = ({singleItem, setChange, change}) =>{
 
     const handlePlus = (singleItem) =>{
         //adds a specific cart item
-        fetch("/api/add-cart-item", {
+        fetch("https://buy-time.onrender.com/api/add-cart-item", {
             method: 'POST',
             headers:{
             'Content-type':'application/json',

@@ -12,7 +12,7 @@ const CartContainer = () =>{
 
         //getting all the items in cart
         useEffect(() =>{
-            fetch("/api/get-cart-items/58bf7fa8-2892-46dd-a0dc-0f95188acea1")
+            fetch("https://buy-time.onrender.com/api/get-cart-items/58bf7fa8-2892-46dd-a0dc-0f95188acea1")
                 .then((res) => res.json())
                 .then((data) =>{
                     setCartData(data.data);
@@ -45,7 +45,7 @@ const CartContainer = () =>{
                 e.stopPropagation();
                 
                 //remove all cart items
-                fetch("api/remove-items/58bf7fa8-2892-46dd-a0dc-0f95188acea1", {
+                fetch("https://buy-time.onrender.com/api/remove-items/58bf7fa8-2892-46dd-a0dc-0f95188acea1", {
                     method: "PATCH",
                     headers: {
                         'Content-Type': 'application/json'

@@ -3,7 +3,7 @@ import styled from "styled-components"
 const AddToCart = ({object}) =>{
     const handleCart = (item) =>{
         //adding one item to the cart
-        fetch("/api/add-cart-item", {
+        fetch("https://buy-time.onrender.com/api/add-cart-item", {
             method: 'POST',
             headers:{
             'Content-type':'application/json',

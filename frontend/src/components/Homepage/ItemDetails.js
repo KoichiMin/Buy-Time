@@ -20,11 +20,11 @@ const ItemDetails = () => {
 
     useEffect(() => {
         if(WatchDataGlobal.watchDataHasLoaded) {
-            fetch(`/api/get-item/${itemId}`)
+            fetch(`https://buy-time.onrender.com/api/get-item/${itemId}`)
             .then(res => res.json())
             .then(data => {
                 setObject(data.data);
-                fetch(`/api/get-all-companies`)
+                fetch(`https://buy-time.onrender.com/api/get-all-companies`)
                 .then(res => res.json())
                 .then(data => {
                     setCompanies(data.data)

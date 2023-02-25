@@ -31,7 +31,7 @@ const BuyNowModal = ({ object }) => {
         const _id = object._id
 
         //removes one item in stock on click of buy now button
-        fetch(`/api/updatestock/${object._id}`, {
+        fetch(`https://buy-time.onrender.com/api/updatestock/${object._id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json'

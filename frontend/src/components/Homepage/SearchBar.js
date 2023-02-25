@@ -16,7 +16,7 @@ const SearchBar = () => {
 
     useEffect(() => {
         //getting ids and categories and names
-        fetch(`/api/getWatchesNames`)
+        fetch(`https://buy-time.onrender.com/api/getWatchesNames`)
         .then(res => res.json())
         .then((data) => {
             updateWatchDataGlobal({ data: {
@@ -70,7 +70,7 @@ const SearchBar = () => {
                 }}
                 onKeyDown= {(e) => {
                     if(e.code === "Enter") {
-                        fetch(`/api/getWatchesByName/6/${SearchBarInput}`)
+                        fetch(`https://buy-time.onrender.com/api/getWatchesByName/6/${SearchBarInput}`)
                         .then(res => res.json())
                         .then(data => {
                             updateSearchResults({data:data.pages});
